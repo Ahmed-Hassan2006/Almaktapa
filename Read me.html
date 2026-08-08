@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الدليل الشامل — نورين المعرفة: للبحث والقراءة (Noorain Knowledge)</title>
+<style>
+  :root {
+    --main: #0b5c7e;
+    --main-dark: #083f57;
+    --accent: #d9a441;
+    --bg: #f4f7fa;
+    --card: #ffffff;
+    --text: #1d2a36;
+    --muted: #546575;
+    --border: #d2deeb;
+    --ok: #198754;
+    --soft: #eaf3fb;
+    --focus: #d9a441;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    line-height: 1.9;
+    font-size: 16px;
+  }
+
+  /* Accessibility Focus Styles */
+  a:focus, button:focus, input:focus, select:focus {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 24px 18px 60px;
+  }
+
+  header.hero {
+    background: linear-gradient(135deg, var(--main) 0%, var(--main-dark) 100%);
+    color: #ffffff;
+    border-radius: 18px;
+    padding: 40px 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 8px 24px rgba(8, 63, 87, 0.22);
+  }
+
+  header.hero h1 {
+    margin: 0 0 10px;
+    font-size: 28px;
+    line-height: 1.4;
+  }
+
+  header.hero p {
+    margin: 6px 0;
+    opacity: 0.95;
+    font-size: 17px;
+  }
+
+  .badge-container {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .badge {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #ffffff;
+    padding: 3px 14px;
+    border-radius: 999px;
+    font-size: 13.5px;
+  }
+
+  nav.toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 28px;
+    margin-bottom: 30px;
+  }
+
+  nav.toc h2 {
+    margin-top: 0;
+    color: var(--main-dark);
+    font-size: 20px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+  }
+
+  nav.toc ol {
+    columns: 2;
+    column-gap: 40px;
+    margin: 0;
+    padding-right: 22px;
+  }
+
+  nav.toc a {
+    color: var(--main);
+    text-decoration: none;
+    display: inline-block;
+    padding: 4px 0;
+    font-weight: 600;
+  }
+
+  nav.toc a:hover {
+    text-decoration: underline;
+    color: var(--main-dark);
+  }
+
+  h2.section-title {
+    color: var(--main-dark);
+    font-size: 22px;
+    margin: 40px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--accent);
+  }
+
+  h3 {
+    color: var(--main);
+    margin: 22px 0 10px;
+    font-size: 18px;
+  }
+
+  h4 {
+    color: var(--main-dark);
+    margin: 16px 0 8px;
+    font-size: 16px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin: 16px 0;
+    box-shadow: 0 2px 8px rgba(16, 44, 66, 0.04);
+  }
+
+  .grid2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  ul, ol {
+    padding-right: 24px;
+    margin: 10px 0;
+  }
+
+  li {
+    margin: 6px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    background: var(--card);
+  }
+
+  th, td {
+    border: 1px solid var(--border);
+    padding: 12px 14px;
+    text-align: right;
+    vertical-align: top;
+  }
+
+  th {
+    background: var(--soft);
+    color: var(--main-dark);
+    font-weight: bold;
+  }
+
+  tr:nth-child(even) td {
+    background: #fafcfe;
+  }
+
+  .note, .tip, .ok, .warn {
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+
+  .note { background: #fff8e6; border: 1px solid #f0d48a; color: #5c4300; }
+  .tip { background: #e8f3fb; border: 1px solid #a7cfe6; color: #083f57; }
+  .ok { background: #e8f6ee; border: 1px solid #a8dcc2; color: #0f5132; }
+  .warn { background: #fdecea; border: 1px solid #f0b0a8; color: #842029; }
+
+  .link {
+    color: var(--main);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--main);
+  }
+
+  .link:hover {
+    border-bottom-style: solid;
+  }
+
+  .copy-btn {
+    background: var(--main);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 12px;
+    margin-right: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+  }
+
+  .copy-btn:hover {
+    background: var(--main-dark);
+  }
+
+  .copy-btn.copied {
+    background: var(--ok);
+  }
+
+  .contact {
+    background: linear-gradient(135deg, var(--main-dark) 0%, var(--main) 100%);
+    color: #ffffff;
+    border-radius: 18px;
+    padding: 36px 32px;
+    margin-top: 48px;
+    box-shadow: 0 8px 24px rgba(8, 63, 87, 0.22);
+  }
+
+  .contact h2 {
+    margin-top: 0;
+    color: #ffffff;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 8px;
+    display: inline-block;
+  }
+
+  .contact h3 { color: #ffffff; }
+
+  .btn-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 10px 18px;
+    margin: 6px 4px;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .btn-contact:hover { background: rgba(255, 255, 255, 0.26); }
+  .btn-wa:hover { background: #1faa5c; border-color: #1faa5c; }
+  .btn-tg:hover { background: #229ed9; border-color: #229ed9; }
+  .btn-em:hover { background: #c0392b; border-color: #c0392b; }
+
+  .dev-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 18px 0;
+  }
+
+  .dev-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    padding: 10px 16px;
+    direction: ltr;
+    text-align: left;
+  }
+
+  .dev-item span {
+    display: block;
+    font-size: 12px;
+    opacity: 0.85;
+    direction: rtl;
+    text-align: right;
+  }
+
+  .footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13.5px;
+    margin-top: 30px;
+  }
+
+  .kbd {
+    background: #ffffff;
+    border: 1px solid #b8c7d6;
+    border-bottom-width: 2px;
+    border-radius: 5px;
+    padding: 1px 7px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.88em;
+    color: var(--main-dark);
+    white-space: nowrap;
+  }
+
+  .step {
+    font-weight: bold;
+    color: var(--main-dark);
+  }
+
+  @media (max-width: 680px) {
+    header.hero { padding: 28px 20px; }
+    header.hero h1 { font-size: 22px; }
+    nav.toc ol { columns: 1; }
+    .wrap { padding: 16px 12px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="hero" role="banner">
+  <h1>الدليل الشامل لبرنامج «نورين المعرفة: للبحث والقراءة»</h1>
+  <p><strong>Noorain Knowledge (NKND)</strong> — نافذتك البرمجية الشاملة لتصفح كتب المكتبات الرقمية، والبحث الذكي، واستكشاف الموسوعات القواميس، ومتابعة الأخبار.</p>
+  <div class="badge-container" aria-label="مميزات البرنامج الرئيسية">
+    <span class="badge">نُورُ البَحْثِ والقِرَاءَة</span>
+    <span class="badge">تصفح كتب المكتبات</span>
+    <span class="badge">بحث ذكي شامل</span>
+    <span class="badge">موسوعات وقواميس</span>
+    <span class="badge">مركز الأخبار</span>
+    <span class="badge">مفضلة وعلامات مرجعية</span>
+    <span class="badge">تحديثات تلقائية</span>
+  </div>
+</header>
+
+<nav class="toc" aria-label="فهرس الدليل">
+  <h2>فهرس الدليل</h2>
+  <ol>
+    <li><a href="#intro">مفهوم البرنامج وفلسفة الاسم</a></li>
+    <li><a href="#first">أول مرة تفتح البرنامج</a></li>
+    <li><a href="#main">شرح الشاشة الرئيسية</a></li>
+    <li><a href="#browse">تصفح الكتب خطوة بخطوة</a></li>
+    <li><a href="#read">قراءة وتصفح الكتب بالتفصيل</a></li>
+    <li><a href="#search">أنواع البحث الثلاثة</a></li>
+    <li><a href="#encyc">مركز المعلومات: الموسوعات والقواميس</a></li>
+    <li><a href="#news">متابعة الأخبار</a></li>
+    <li><a href="#favorites">المفضلة والإشارات المرجعية</a></li>
+    <li><a href="#marks">العلامات والتعليقات داخل الكتاب</a></li>
+    <li><a href="#settings">الإعدادات بالتفصيل</a></li>
+    <li><a href="#updates">نظام التحديثات والتحميل</a></li>
+    <li><a href="#shortcuts">اختصارات لوحة المفاتيح</a></li>
+    <li><a href="#faq">أسئلة شائعة وحل المشكلات</a></li>
+    <li><a href="#sources">المصادر والمحتوى</a></li>
+    <li><a href="#dev">المطوّر وطرق التواصل</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="intro" aria-labelledby="sec1-title">
+  <h2 class="section-title" id="sec1-title">١) مفهوم البرنامج وفلسفة اسم «نورين المعرفة»</h2>
+  <div class="card">
+    <h3>لماذا سُمِّي البرنامج بـ «نورين المعرفة»؟</h3>
+    <p>
+      تستند فكرة البرنامج إلى ركيزة لغوية ومعرفية أصيلة: <strong>إن للمعلومة النافعة نورين لا يستغني أحدهما عن الآخر:</strong>
+    </p>
+    <ul>
+      <li><strong>النُّور الأول (البحث الذكي):</strong> فلا قراءة مثمرة وواعية بغير بحث وتنقيب واهتداء إلى مواضع الفائدة ومصادرها.</li>
+      <li><strong>النُّور الثاني (القراءة الواعية):</strong> فلا قيمة ولا نفع يُجنى من البحث الدقيق بغير قراءة متأنية، وفهم، واستيعاب للمحتوى.</li>
+    </ul>
+    <p>
+      ومن هذا المنطلق، يدمج برنامج <strong>«نورين المعرفة» (Noorain Knowledge - NKND)</strong> أدوات البحث المتقدم والتصفح القرائي المريح في بيئة واحدة متكاملة، ليضع بين يديك تجربة معرفية مجانية وفريدة.
+    </p>
+    
+    <h3>ماذا يقدم لك البرنامج؟</h3>
+    <ul>
+      <li><strong>تصفح المكتبات الرقمية:</strong> وصول إلى آلاف الكتب والمصادر في أقسام متعددة ومتكاملة تلقائياً.</li>
+      <li><strong>محرك بحث ذكي:</strong> إمكانية الوصول السريع للعناوين والمضامين بدقة ودون تكرار.</li>
+      <li><strong>مركز المعلومات والمعارف:</strong> الوصول المباشر للموسوعات المعرفية المفتوحة والمعاجم اللغوية والقواميس.</li>
+      <li><strong>متابعة الأخبار:</strong> الاطلاع على آخر المستجدات الإخبارية العربية لحظة بلحظة من مصادر متعددة.</li>
+      <li><strong>أدوات القارئ الشخصي:</strong> حفظ المفضلة، إضافة العلامات والتعليقات، والتذكر التلقائي لآخر صفحة وقفت عندها.</li>
+    </ul>
+    <div class="ok">✅ تعمل جميع الميزات مباشرة فور فتح البرنامج دون الحاجة لتسجيل حساب أو إدخال بيانات شخصية.</div>
+  </div>
+</section>
+
+<section id="first" aria-labelledby="sec2-title">
+  <h2 class="section-title" id="sec2-title">٢) أول مرة تفتح البرنامج</h2>
+  <div class="card">
+    <ol>
+      <li><span class="step">التشغيل:</span> افتح البرنامج من ملف التشغيل المباشر أو الاختصار.</li>
+      <li><span class="step">جلب الأقسام:</span> عند البدء، يقوم البرنامج بجلب تصنيفات كتب المكتبات الرقمية، وتظهر في شريط الحالة أسفل النافذة رسالة «جاري سحب التصنيفات الأساسية...».</li>
+      <li><span class="step">عرض القوائم:</span> فور اكتمال الجلب، تُعرض الأقسام الرئيسية (مثل كتب العقيدة، التفسير، التاريخ، الأدب، الروايات، وغيرها) مرتبة أبجدياً.</li>
+      <li><span class="step">فحص التحديثات تلقائياً:</span> إذا أتيحت نسخة أحدث من البرنامج، ستظهر نافذة تنبيهية تلقائية بخيارات التحميل.</li>
+    </ol>
+    <div class="tip">💡 في حال عدم ظهور الأقسام لأي سبب (كانقطاع مؤقت للإنترنت)، اضغط على زر <strong>«تحديث البيانات (F5)»</strong> من أعلى النافذة لإعادة التحميل.</div>
+  </div>
+</section>
+
+<section id="main" aria-labelledby="sec3-title">
+  <h2 class="section-title" id="sec3-title">٣) شرح الشاشة الرئيسية</h2>
+  <div class="card">
+    <p>تتكون الواجهة الرئيسية من عناصر مرتبة وبسيطة لتسهيل الوصول والتنقل:</p>
+
+    <h3>أ) الشريط العلوي</h3>
+    <table aria-label="جدول أزرار الشريط العلوي">
+      <thead>
+        <tr><th scope="col">العنصر</th><th scope="col">الوظيفة</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>شريط عنوان المصدر</td><td>يعرض القسم أو القائمة المعروضة حالياً وتتغير تلقائياً حسب التنقل.</td></tr>
+        <tr><td>زر الإعدادات (<kbd>Ctrl+S</kbd>)</td><td>فتح نافذة التخصيص والمظهر والأصوات.</td></tr>
+        <tr><td>زر مركز المعلومات (<kbd>Ctrl+I</kbd>)</td><td>الانتقال إلى نافذة الموسوعات والقواميس والأخبار.</td></tr>
+        <tr><td>زر المفضلة (<kbd>Ctrl+M</kbd>)</td><td>عرض قوائم الكتب والمواضيع المحفوظة لديك.</td></tr>
+        <tr><td>زر تحديث البيانات (<kbd>F5</kbd>)</td><td>إعادة جلب القوائم أو الأقسام الحالية.</td></tr>
+        <tr><td>زر حول البرنامج</td><td>عرض معلومات الاصدار وتفاصيل مطور البرنامج.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>ب) شريط البحث الرئيسي</h3>
+    <p>حقل بحث مكتوب فيه <strong>«بحث ذكي في المكتبة كلها / القسم الحالي (Ctrl+F)...»</strong> مزود بزر «بحث» وزر «إيقاف» لإلغاء العمليات الجارية.</p>
+
+    <h3>ج) زر الرجوع</h3>
+    <p>زر <strong>«← رجوع»</strong> (أو الضغط على زر <kbd>Backspace</kbd>) يعيدك للشاشة السابقة مباشرة.</p>
+
+    <h3>د) مساحة القائمة الرئيسية</h3>
+    <p>المساحة الكبيرة التي تُعرض فيها الأقسام أو قوائم الكتب أو فهارس الموضوعات، ويمكن التنقل فيها بالفأرة أو أسهم لوحة المفاتيح والفتح عبر زر الإدخال <kbd>Enter</kbd>.</p>
+
+    <h3>هـ) شريط التنقل السفلي</h3>
+    <p>يحتوي أزرار التنقل بين صفحات القوائم (الأولى، السابقة، التالية، الأخيرة، الانتقال إلى رقم صفحة)، بالإضافة إلى زر <strong>«المزيد من الإجراءات»</strong> لفتح الخيارات الإضافية.</p>
+
+    <h3>و) شريط الحالة</h3>
+    <p>الشريط السفلي الذي يوضح حالة الاتصال، وعدد النتائج، والرسائل الإرشادية أثناء التصفح.</p>
+  </div>
+</section>
+
+<section id="browse" aria-labelledby="sec4-title">
+  <h2 class="section-title" id="sec4-title">٤) تصفح الكتب خطوة بخطوة</h2>
+  <div class="card">
+    <h3>تسلسل التصفح</h3>
+    <p>يسير التصفح في البرنامج ضمن خط متسق: <strong>الأقسام الرئيسية ← قائمة الكتب ← فهرس الكتاب ← شاشة القراءة</strong></p>
+    <ol>
+      <li><span class="step">اختيار القسم:</span> انقر مرتين (أو اضغط <kbd>Enter</kbd>) على القسم المطلوب.</li>
+      <li><span class="step">استعراض الكتب:</span> تُعرض كتب القسم مع اسم المؤلف وعدد الصفحات لكل كتاب.</li>
+      <li><span class="step">فتح الكتاب:</span> اضغط مرتين على اسم الكتاب لجلب الفهرس وتحديد بداية القراءة.</li>
+      <li><span class="step">الرجوع للمستوى السابق:</span> اضغط على زر «← رجوع» للعودة خطوة إلى الخلف.</li>
+    </ol>
+
+    <h3>القائمة السياقية (زر الفأرة الأيمن على الكتاب)</h3>
+    <ul>
+      <li><strong>البطاقة التعريفية للكتاب:</strong> نافذة شاملة تعين اسم الكتاب، المؤلف، المحقق، الناشر، رقم الطبعة، وعدد الصفحات مع إمكانية نسخ البيانات.</li>
+      <li><strong>إضافة للمفضلة:</strong> حفظ الكتاب في قائمة المفضلة المباشرة.</li>
+      <li><strong>فتح في المتصفح:</strong> الانتقال لصفحة الكتاب على موقعه الأصلي.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="read" aria-labelledby="sec5-title">
+  <h2 class="section-title" id="sec5-title">٥) قراءة وتصفح الكتب بالتفصيل</h2>
+  <div class="card">
+    <p>عند فتح أي كتاب، تتأهل النافذة لتوفير بيئة قراءة هادئة ومريحة تضم العناصر التالية:</p>
+
+    <h3>عناصر شاشة القراءة</h3>
+    <ul>
+      <li><strong>شريط العنوان العلوي:</strong> يوضح اسم الكتاب ورقم الصفحة الحالية من إجمالي الصفحات.</li>
+      <li><strong>شريط البحث الداخلي:</strong> حقل خصص للبحث عن الكلمات والعبارات داخل نص الكتاب الحالي (<kbd>Ctrl+F</kbd>).</li>
+      <li><strong>منطقة عرض النصوص:</strong> تعرض نص الصفحة بخط واضح، وتتيح النسخ التحديد والتكبير والتصغير.</li>
+      <li><strong>قوائم القراءة العلوية:</strong>
+        <ul>
+          <li><strong>التصفح:</strong> الانتقال بين الصفحات أو الانتقال إلى رقم صفحة محدد.</li>
+          <li><strong>تحرير:</strong> التحكم بحجم الخط، إظهار أو إخفاء التشكيل، تحديد النص، وفتح النص في المفكرة.</li>
+          <li><strong>خيارات الموضوع/الكتاب:</strong> بطاقة معلومات الكتاب، إضافته للمفضلة، وفتحه في المتصفح.</li>
+          <li><strong>عرض:</strong> تبديل الوضع الليلي والنهاري، وضع ملء الشاشة (<kbd>F11</kbd>).</li>
+          <li><strong>العلامات والتعليقات:</strong> حفظ العلامات المرجعية وإضافة الملاحظات الشخصية.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>طرق عرض المحتوى (الصفحات / المواضيع والأرفف)</h3>
+    <ul>
+      <li>تُعرض معظم الكتب بنظام الصفحات المتتالية وتتيح الانتقال بينها بأزرار التصفح.</li>
+      <li>بعض الكتب الأخرى تُفتح وتُعرض على شكل <strong>مواضيع</strong> أو <strong>أرفف مفهرسة</strong>؛ ويمكن التنقل بين موضوعاتها وسلاسلها بسهولة من قائمة «التصفح» عبر خيارَي <strong>«الموضوع السابق / الموضوع التالي»</strong> باختصاري اللوحة (<kbd>Ctrl+P</kbd> و <kbd>Ctrl+N</kbd>).</li>
+      <li>في الكتب المفهرسة بالأرفف والأجزاء، قد يظهر شريط <strong>«تصفية»</strong> منسدل أعلى الشاشة لتسهيل التنقل المباشر بين المجلدات والأجزاء المختلفة.</li>
+      <li>في حال حدوث بطء في الاتصال أثناء جلب صفحة معينة، سيظهر زر <strong>«إعادة محاولة جلب الصفحة»</strong> لتجديد الطلب مباشرة.</li>
+    </ul>
+
+    <div class="note">📖 <strong>التذكر التلقائي:</strong> يحفظ البرنامج تلقائياً آخر صفحة أو موضوع وقفت عنده في كل كتاب، ويعيدك إليه فور إعادة فتح الكتاب مجدداً.</div>
+  </div>
+</section>
+
+<section id="search" aria-labelledby="sec6-title">
+  <h2 class="section-title" id="sec6-title">٦) أنواع البحث الثلاثة</h2>
+  <div class="card">
+    <p>يعمل نظام البحث بذكاء وفقاً للمكان الذي تتواجد فيه داخل البرنامج:</p>
+
+    <h3>١) البحث الشامل في المكتبات كافة</h3>
+    <ul>
+      <li>يُنفذ من الشاشة الرئيسية عند عرض الأقسام الكلية.</li>
+      <li>اكتب الكلمة أو العبارة واضغط «بحث» أو <span class="kbd">Ctrl+Enter</span>.</li>
+      <li>يبحث المحرك في جميع الأقسام والكتب معاً ويورد النتائج مرتبة دون تكرار.</li>
+    </ul>
+
+    <h3>٢) البحث التخصصي داخل القسم الحالي</h3>
+    <ul>
+      <li>يُنفذ عندما تكون داخل قائمة كتب قسم معين.</li>
+      <li>اكتب اسم الكتاب أو كلمة البحث واضغط «بحث»، لتقتصر النتائج على كتب هذا القسم فقط.</li>
+      <li>لإعادة عرض كتب القسم كاملة، اضغط زر البحث بحقل فارغ.</li>
+    </ul>
+
+    <h3>٣) البحث النصي داخل الكتاب الواحد</h3>
+    <ul>
+      <li>يُنفذ من داخل نافذة القراءة بداخل حقل «بحث داخل النص».</li>
+      <li>تُعرض نتائج البحث في قائمة توضح رقم الصفحة ومقتطفاً نصياً من موضع الكلمة، مع زر للانتقال المباشر لصفحة النتيجة.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="encyc" aria-labelledby="sec7-title">
+  <h2 class="section-title" id="sec7-title">٧) مركز المعلومات: الموسوعات والقواميس</h2>
+  <div class="card">
+    <p>عند الضغط على زر <strong>«مركز المعلومات (<kbd>Ctrl+I</kbd>)»</strong>، تتأهل النافذة للبحث التفاعلي في الموسوعات الرقمية والمعاجم اللغوية:</p>
+    <ol>
+      <li><span class="step">اختيار الخدمة:</span> حدد الموسوعة أو المعجم المطلوب من قائمة «مصدر الخدمة».</li>
+      <li><span class="step">إجراء البحث:</span> اكتب عنوان المقال أو المادة المعجمية واضغط «بحث».</li>
+      <li><span class="step">استكشاف عشوائي:</span> يمكنك استخدام زر «نتائج عشوائية» لجلب موضوعات ومقالات عشوائية للتثقيف.</li>
+      <li><span class="step">القراءة المريحة:</span> عند فتح النتيجة، يُعرض المقال كاملاً في شاشة القراءة المجهزة بتكبير الخط والوضع الليلي ونسخ النصوص.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="news" aria-labelledby="sec8-title">
+  <h2 class="section-title" id="sec8-title">٨) متابعة الأخبار</h2>
+  <div class="card">
+    <p>يتيح مركز المعلومات أيضاً متابعة النشرات والموجزات الإخبارية العربية:</p>
+    <ul>
+      <li>اختر المصدر الإخباري من قائمة «مصدر الخدمة» في نافذة مركز المعلومات.</li>
+      <li>استعرض العناوين الحديثة مع ملخص الخبر وتاريخ النشر.</li>
+      <li>يمكنك البحث داخل العناوين عن كلمة محددة أو تصفح مقالات تقنية وإخبارية عامة.</li>
+      <li>انقر على الخبر لقراءته كاملاً بداخل البرنامج أو فتحه على موقعه الأصلي.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="favorites" aria-labelledby="sec9-title">
+  <h2 class="section-title" id="sec9-title">٩) المفضلة والإشارات المرجعية</h2>
+  <div class="card">
+    <h3>إدارة المفضلة</h3>
+    <ul>
+      <li><strong>إضافة كتاب:</strong> بالنقر بزر الفأرة الأيمن على أي كتاب واختيار «إضافة للمفضلة»، أو من قائمة خيارات الكتاب (<kbd>Ctrl+Shift+F</kbd>).</li>
+      <li><strong>عرض المحفوظات:</strong> بالضغط على زر «فتح المفضلة (<kbd>Ctrl+M</kbd>)» في الشاشة الرئيسية.</li>
+      <li><strong>التحكم:</strong> فتح العناصر المحفوظة مباشرة أو حذفها بضغطة زر.</li>
+    </ul>
+
+    <h3>الإشارات المرجعية في الموضوعات</h3>
+    <ul>
+      <li>يمكن وضع إشارة مرجعية على أي سطر في الكتب والموضوعات عبر قائمة «العلامات والتعليقات ← إضافة علامة للسطر الحالي» (<kbd>Ctrl+M</kbd>).</li>
+      <li>تسمح هذه الميزة بكتابة ملاحظات وتعليقات شخصية على السطور المحددة.</li>
+    </ul>
+    <div class="note">🔒 جميع بيانات المفضلة والعلامات تُحفظ محلياً على جهاز الشخصي بأمان وتظل محفوظة بعد إغلاق البرنامج.</div>
+  </div>
+</section>
+
+<section id="marks" aria-labelledby="sec10-title">
+  <h2 class="section-title" id="sec10-title">١٠) العلامات والتعليقات داخل الكتاب</h2>
+  <div class="card">
+    <p>لتسهيل الدراسة والتدوين أثناء قراءة كتب الصفحات:</p>
+    <ul>
+      <li><strong>علامات السطور:</strong> ضع علامة على أي سطر مع تدوين تعليق شخصي اختياري عبر اختصار <kbd>Ctrl+M</kbd>.</li>
+      <li><strong>استعراض العلامات:</strong> اضغط على <kbd>Ctrl+Shift+A</kbd> لفتح نافذة بجميع العلامات والتعليقات المسجلة في الكتاب الحالي مقترنة بأرقام الصفحات والسطور.</li>
+      <li><strong>القفز السريع:</strong> اختر أي علامة واضغط «الانتقال إلى العلامة المحددة» للوصول الفوري لموقعها داخل الكتاب.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="settings" aria-labelledby="sec11-title">
+  <h2 class="section-title" id="sec11-title">١١) الإعدادات بالتفصيل</h2>
+  <div class="card">
+    <p>نافذة الإعدادات (<kbd>Ctrl+S</kbd>) مقسمة إلى ثلاثة تبويبات لتخصيص التجربة القرائية (اضغط زر «حفظ» لتثبيت التعديلات):</p>
+
+    <h3>التبويب الأول: الخيارات العامة</h3>
+    <table aria-label="خيارات التبويب العام">
+      <thead>
+        <tr><th scope="col">الخيار</th><th scope="col">الوصف</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>عدد الكتب المعروضة في الصفحة</td><td>تحديد كم كتاباً يظهر في الصفحة الواحدة (بين ٥ و١٠٠).</td></tr>
+        <tr><td>فحص التحديثات عند البدء</td><td>تفعيل أو تعطيل الفحص التلقائي عن نسخ أحدث فور فتح البرنامج.</td></tr>
+        <tr><td>التحقق من وجود تحديثات الآن</td><td>زر زمني لإجراء فحص يدوي فوراً.</td></tr>
+        <tr><td>بدء البرنامج بنافذة ممتلئة</td><td>تشغيل النافذة بوضع ملء الشاشة تلقائياً.</td></tr>
+        <tr><td>مجلد حفظ ملفات التحميل</td><td>تحديد المجلد الذي تُحفظ فيه ملفات التحديث والنسخ المنزلة.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>التبويب الثاني: مظهر البرنامج</h3>
+    <table aria-label="خيارات تبويب المظهر">
+      <thead>
+        <tr><th scope="col">الخيار</th><th scope="col">الوصف</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>الوضع اللوني</td><td>التبديل بين الوضع النهاري (الفاتح) والوضع الليلي (الداكن).</td></tr>
+        <tr><td>حجم الخطوط</td><td>تعديل حجم خط القوائم، وخط القراءة الداخلي بصورة مستقلة.</td></tr>
+        <tr><td>عائلة الخط</td><td>اختيار نوع الخط المفضل للقراءة (مثل: Amiri, Georgia, Times New Roman).</td></tr>
+        <tr><td>ألوان خلفية القراءة</td><td>اختيار خيارات ألوان مريحة للعين يناسب القراءة الطويلة (مثل: أبيض ناصع، عاجي هادئ، رمادي ناعم، أزرق مريح، دافئ).</td></tr>
+        <tr><td>إظهار التشكيل</td><td>عرض أو إخفاء حركات التشكيل في النصوص القرائية.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>التبويب الثالث: الأصوات</h3>
+    <table aria-label="خيارات الأصوات">
+      <thead>
+        <tr><th scope="col">الخيار</th><th scope="col">الوصف</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>صوت البحث والصفحات والأحداث</td><td>تفعيل أو تعطيل المؤثرات الصوتية عند التنقل وإنجاز العمليات.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="updates" aria-labelledby="sec12-title">
+  <h2 class="section-title" id="sec12-title">١٢) نظام التحديثات والتحميل</h2>
+  <div class="card">
+    <h3>كيف يعمل نظام التحديث التلقائي؟</h3>
+    <ol>
+      <li>يفحص البرنامج توفر أي إصدارات جديدة تلقائياً عند الإقلاع، أو يدويًا من نافذة الإعدادات.</li>
+      <li>عند وجود إصدار أحدث، تظهر نافذة «يتوفر إصدار جديد» توضح قائمة التحسينات والمميزات الجديدة.</li>
+      <li><strong>صندوق اختيار صيغة النسخة:</strong> يحتوي القائمة المتاحة حالياً من المطور (حيث تُعرض النسخ المتوفرة حالياً كـ النسخة المحمولة Portable، أو النسخ المثبتة وباقي منصات التشغيل فور إطلاقها وتوفيرها).</li>
+    </ol>
+
+    <h3>التنزيل المباشر بداخل البرنامج</h3>
+    <ul>
+      <li>عند اختيار «تنزيل داخل البرنامج»، يفتح <strong>مدير التحميلات المدمج</strong> متضمناً شريط التقدم، السرعة، الحجم المنزل، والوقت المتبقي.</li>
+      <li>يدعم مدير التحميلات الإيقاف المؤقت والاستئناف والإلغاء.</li>
+      <li>عند الاكتمال، تُعرض نافذة تؤكد حفظ الملف في المجلد المحدد بالإعدادات مع أزرار تشغيل واستعراض المجلد.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="shortcuts" aria-labelledby="sec13-title">
+  <h2 class="section-title" id="sec13-title">١٣) اختصارات لوحة المفاتيح</h2>
+  <div class="card">
+    <div class="grid2">
+      <div>
+        <h3>في الشاشة الرئيسية</h3>
+        <table aria-label="اختصارات الشاشة الرئيسية">
+          <thead>
+            <tr><th scope="col">الاختصار</th><th scope="col">الوظيفة</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd>Ctrl+F</kbd></td><td>الذهاب إلى حقل البحث</td></tr>
+            <tr><td><kbd>Ctrl+Enter</kbd></td><td>تنفيذ البحث الشامل</td></tr>
+            <tr><td><kbd>Alt+يمين / يسار</kbd></td><td>الصفحة السابقة / التالية في الكتب</td></tr>
+            <tr><td><kbd>Alt+أعلى / أسفل</kbd></td><td>الصفحة الأولى / الأخيرة</td></tr>
+            <tr><td><kbd>Ctrl+M</kbd></td><td>فتح المفضلة</td></tr>
+            <tr><td><kbd>Ctrl+S</kbd></td><td>فتح الإعدادات</td></tr>
+            <tr><td><kbd>Ctrl+I</kbd></td><td>فتح مركز المعلومات</td></tr>
+            <tr><td><kbd>F5</kbd></td><td>تحديث البيانات</td></tr>
+            <tr><td><kbd>Backspace</kbd></td><td>الرجوع للشاشة السابقة</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <h3>في نافذة القراءة</h3>
+        <table aria-label="اختصارات نافذة القراءة">
+          <thead>
+            <tr><th scope="col">الاختصار</th><th scope="col">الوظيفة</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd>Alt+يمين / يسار</kbd></td><td>الصفحة السابقة / التالية</td></tr>
+            <tr><td><kbd>Ctrl+P / Ctrl+N</kbd></td><td>الموضوع السابق / الموضوع التالي</td></tr>
+            <tr><td><kbd>Ctrl++ / Ctrl+-</kbd></td><td>تكبير / تصغير الخط</td></tr>
+            <tr><td><kbd>Ctrl+A / Ctrl+C</kbd></td><td>تحديد الكل / نسخ النص</td></tr>
+            <tr><td><kbd>Ctrl+Shift+D</kbd></td><td>تبديل الوضع الليلي</td></tr>
+            <tr><td><kbd>F11</kbd></td><td>ملء الشاشة</td></tr>
+            <tr><td><kbd>Ctrl+M</kbd></td><td>إضافة علامة / تعليق</td></tr>
+            <tr><td><kbd>Ctrl+Shift+A</kbd></td><td>عرض العلامات والتعليقات</td></tr>
+            <tr><td><kbd>Ctrl+W</kbd></td><td>إغلاق الشاشة والعودة</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="sec14-title">
+  <h2 class="section-title" id="sec14-title">١٤) أسئلة شائعة وحل المشكلات</h2>
+  <div class="card">
+    <h3>لماذا لا تظهر الأقسام أو نتائج البحث؟</h3>
+    <p>تأكد من اتصال الجهاز بالإنترنت، ثم اضغط على زر «تحديث البيانات (<kbd>F5</kbd>)» لإعادة الجلب من المصادر.</p>
+
+    <h3>لماذا يفشل جلب صفحة معينة في بعض الكتب؟</h3>
+    <p>انقر على زر «إعادة محاولة جلب الصفحة» الذي يظهر في الشاشة لإعادة الاتصال الخاطف بالسيرفر.</p>
+
+    <h3>هل يعمل البرنامج بدون إنترنت؟</h3>
+    <p>تحتاج عمليات جلب القوائم والبحث المباشر والتحديثات إلى اتصال بالإنترنت، بينما تظل بياناتك المحفوظة (كالمفضلة والعلامات والتعليقات) محفوظة على جهازك وتعمل دائماً.</p>
+
+    <h3>أين أجد الملفات المنزلة عند التحديث؟</h3>
+    <p>تُحفظ الملفات بداخل مجلد التحميل المعتمد في «الإعدادات ← مجلد حفظ ملفات التحميل» (الافتراضي هو مجلد Downloads في نظام ويندوز).</p>
+  </div>
+</section>
+
+<section id="sources" aria-labelledby="sec15-title">
+  <h2 class="section-title" id="sec15-title">١٥) المصادر والمحتوى</h2>
+  <p>يستمد برنامج <strong>«نورين المعرفة»</strong> محتواه القرائي والمعرفي من مصادر ومكتبات عربية ودولية موثوقة ومتاحة للعموم، ويقدم لها وافر الشكر والتقدير. جميع المحتويات ملك لأصحابها الأصليين والبرنامج يتيح قراءتها والوصول إليها عبر الروابط المباشرة:</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h4>المكتبة الشاملة <span class="svc-tag">(بوابة الكتب الإسلامية والعربية)</span></h4>
+      <p>الرابط الرسمي: <a class="link" href="https://shamela.ws" target="_blank" rel="noopener">https://shamela.ws</a></p>
+    </div>
+    <div class="card">
+      <h4>مكتبة هنداوي <span class="svc-tag">(مؤسسة هنداوي للتعليم والثقافة)</span></h4>
+      <p>الرابط الرسمي: <a class="link" href="https://www.safahat.org" target="_blank" rel="noopener">https://www.safahat.org</a><br>
+      النطاق السابق: <a class="link" href="https://www.hindawi.org" target="_blank" rel="noopener">https://www.hindawi.org</a></p>
+    </div>
+    <div class="card">
+      <h4>ويكيبيديا العربية</h4>
+      <p>الرابط الرسمي: <a class="link" href="https://ar.wikipedia.org" target="_blank" rel="noopener">https://ar.wikipedia.org</a></p>
+    </div>
+    <div class="card">
+      <h4>ويكيبيديا الإنجليزية</h4>
+      <p>الرابط الرسمي: <a class="link" href="https://en.wikipedia.org" target="_blank" rel="noopener">https://en.wikipedia.org</a></p>
+    </div>
+    <div class="card">
+      <h4>ويكاموس العربي</h4>
+      <p>الرابط الرسمي: <a class="link" href="https://ar.wiktionary.org" target="_blank" rel="noopener">https://ar.wiktionary.org</a></p>
+    </div>
+    <div class="card">
+      <h4>ويكي الاقتباس</h4>
+      <p>الرابط الرسمي: <a class="link" href="https://ar.wikiquote.org" target="_blank" rel="noopener">https://ar.wikiquote.org</a></p>
+    </div>
+    <div class="card">
+      <h4>ويكي مصدر</h4>
+      <p>الرابط الرسمي: <a class="link" href="https://ar.wikisource.org" target="_blank" rel="noopener">https://ar.wikisource.org</a></p>
+    </div>
+    <div class="card">
+      <h4>المعرفة العربية</h4>
+      <p>الرابط الرسمي: <a class="link" href="https://www.marefa.org" target="_blank" rel="noopener">https://www.marefa.org</a></p>
+    </div>
+    <div class="card">
+      <h4>آر تي عربي (RT Arabic)</h4>
+      <p>الرابط الرسمي: <a class="link" href="https://arabic.rt.com" target="_blank" rel="noopener">https://arabic.rt.com</a></p>
+    </div>
+    <div class="card">
+      <h4>بي بي سي عربي (BBC Arabic)</h4>
+      <p>الرابط الرسمي: <a class="link" href="https://www.bbc.com/arabic" target="_blank" rel="noopener">https://www.bbc.com/arabic</a></p>
+    </div>
+    <div class="card">
+      <h4>البوابة العربية للأخبار التقنية</h4>
+      <p>الرابط الرسمي: <a class="link" href="https://aitnews.com" target="_blank" rel="noopener">https://aitnews.com</a></p>
+    </div>
+    <div class="card">
+      <h4>التقنية بلا حدود</h4>
+      <p>الرابط الرسمي: <a class="link" href="https://unlimit-tech.com" target="_blank" rel="noopener">https://unlimit-tech.com</a></p>
+    </div>
+  </div>
+
+  <div class="note">📜 <strong>حقوق النشر والملكية:</strong> المحتويات المعروضة بداخل البرنامج هي ملك لمصادرها الأصلية، والبرنامج يعد أداة تصفح وقراءة وعرض ذكية تحيل دائماً إلى المصادر الأصلية.</div>
+</section>
+
+<section id="dev" aria-labelledby="sec16-title">
+  <h2 class="section-title" id="sec16-title">١٦) المطوّر وطرق التواصل</h2>
+  <div class="contact">
+    <h2>✍️ تطوير وإعداد</h2>
+    <p>برمجة وتطوير: <strong>أحمد حسن عبد النبي (Ahmed Hassan)</strong></p>
+    <p>يسعدنا استقبال مقترحاتكم واستفساراتكم والإبلاغ عن الملاحظات في أي وقت.</p>
+
+    <h3>📇 بيانات التواصل المباشر</h3>
+    <div class="dev-info">
+      <div class="dev-item">
+        <span>رقم الواتساب / الهاتف</span>
+        +20 155 886 3325
+        <button class="copy-btn" onclick="copyText('+201558863325', this)" aria-label="نسخ رقم الهاتف">+201558863325 📋 نسخ</button>
+      </div>
+      <div class="dev-item">
+        <span>اسم المستخدم في تيليجرام</span>
+        @ah3376
+        <button class="copy-btn" onclick="copyText('ah3376', this)" aria-label="نسخ اسم تيليجرام">ah3376 📋 نسخ</button>
+      </div>
+      <div class="dev-item">
+        <span>البريد الإلكتروني</span>
+        ah2635670@gmail.com
+        <button class="copy-btn" onclick="copyText('ah2635670@gmail.com', this)" aria-label="نسخ البريد الإلكتروني">نسخ البريد 📋</button>
+      </div>
+    </div>
+
+    <h3>📞 روابط التواصل السريع</h3>
+    <p>
+      <a class="btn-contact btn-wa" href="https://wa.me/201558863325" target="_blank" rel="noopener">💬 واتساب مباشر</a>
+      <a class="btn-contact btn-tg" href="https://t.me/ah3376" target="_blank" rel="noopener">✈️ تيليجرام مباشر</a>
+      <a class="btn-contact btn-em" href="mailto:ah2635670@gmail.com">📧 مراسلة بالبريد</a>
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer" role="contentinfo">
+  برنامج «نورين المعرفة: للبحث والقراءة» (Noorain Knowledge - NKND) — جميع الحقوق محفوظة للمطور · أُنشئ هذا الدليل لخدمة القارئ العربي وتوثيق خصائص البرنامج.
+</footer>
+
+</div>
+
+<script>
+function copyText(text, btn){
+  var done = function(){
+    var old = btn.textContent;
+    btn.textContent = '✓ تم النسخ';
+    btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent = old; btn.classList.remove('copied'); }, 1600);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text, done); });
+  } else {
+    fallbackCopy(text, done);
+  }
+}
+function fallbackCopy(text, done){
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try { document.execCommand('copy'); } catch(e){}
+  document.body.removeChild(ta);
+  done();
+}
+</script>
+</body>
+</html>
