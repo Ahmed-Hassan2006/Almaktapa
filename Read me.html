@@ -3,567 +3,852 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>دليل الاستخدام — بوابة القراءة والمعرفة (RKGate) للأندرويد</title>
+<title>دليل الاستخدام الشامل — تطبيق بوابة القراءة والمعرفة (RKGate)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --main: #0b5c7e;
-    --main-dark: #083f57;
+    --primary: #0b5c7e;
+    --primary-dark: #073b52;
+    --primary-light: #eaf3fb;
     --accent: #d9a441;
-    --bg: #f4f7fa;
-    --card: #ffffff;
-    --text: #1d2a36;
-    --muted: #546575;
-    --border: #d2deeb;
-    --ok: #198754;
-    --soft: #eaf3fb;
-    --focus: #d9a441;
+    --accent-hover: #c49132;
+    --bg: #f5f8fa;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #546575;
+    --border: #dbe5ee;
+    --border-subtle: #edf2f7;
+    --success: #15803d;
+    --success-bg: #edfdf2;
+    --note-bg: #fffbeb;
+    --note-border: #fcd34d;
+    --note-text: #92400e;
+    --shadow-sm: 0 2px 6px rgba(11, 92, 126, 0.05);
+    --shadow-md: 0 6px 18px rgba(11, 92, 126, 0.08);
+    --shadow-lg: 0 12px 28px rgba(7, 59, 82, 0.16);
+    --radius: 12px;
   }
 
-  * { box-sizing: border-box; }
-
-  body {
+  * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-    line-height: 1.9;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text-main);
+    font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+    line-height: 1.85;
     font-size: 16px;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* Accessibility Focus Styles */
-  a:focus, button:focus, input:focus, select:focus {
-    outline: 3px solid var(--focus);
-    outline-offset: 2px;
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.2s ease;
   }
 
-  .wrap {
+  a:hover {
+    color: var(--accent);
+  }
+
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .container {
     max-width: 980px;
     margin: 0 auto;
-    padding: 24px 18px 60px;
+    padding: 30px 20px 80px;
   }
 
-  header.hero {
-    background: linear-gradient(135deg, var(--main) 0%, var(--main-dark) 100%);
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: #ffffff;
-    border-radius: 18px;
-    padding: 40px 32px;
-    margin-bottom: 28px;
-    box-shadow: 0 8px 24px rgba(8, 63, 87, 0.22);
+    border-radius: calc(var(--radius) * 1.5);
+    padding: 45px 35px;
+    margin-bottom: 35px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
   }
 
-  header.hero h1 {
-    margin: 0 0 10px;
-    font-size: 28px;
-    line-height: 1.4;
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(217, 164, 65, 0.2) 0%, transparent 70%);
+    pointer-events: none;
   }
 
-  header.hero p {
-    margin: 6px 0;
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+
+  .hero p.lead {
+    font-size: 17.5px;
+    line-height: 1.7;
     opacity: 0.95;
-    font-size: 17px;
+    margin-bottom: 15px;
+    max-width: 850px;
   }
 
-  .badge-container {
-    margin-top: 14px;
+  .version-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 4px 14px;
+    border-radius: 99px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .badges-grid {
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 9px;
   }
 
   .badge {
-    background: rgba(255, 255, 255, 0.16);
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     color: #ffffff;
-    padding: 3px 14px;
-    border-radius: 999px;
+    padding: 5px 14px;
+    border-radius: 99px;
     font-size: 13.5px;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
   }
 
-  nav.toc {
-    background: var(--card);
+  /* Table of Contents */
+  .toc-card {
+    background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px 28px;
-    margin-bottom: 30px;
+    border-radius: var(--radius);
+    padding: 26px 30px;
+    margin-bottom: 35px;
+    box-shadow: var(--shadow-sm);
   }
 
-  nav.toc h2 {
-    margin-top: 0;
-    color: var(--main-dark);
+  .toc-card h2 {
     font-size: 20px;
-    border-bottom: 2px solid var(--border);
-    padding-bottom: 8px;
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 10px;
   }
 
-  nav.toc ol {
-    columns: 2;
-    column-gap: 40px;
-    margin: 0;
-    padding-right: 22px;
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px 24px;
+    list-style: none;
+    counter-reset: toc-counter;
   }
 
-  nav.toc a {
-    color: var(--main);
-    text-decoration: none;
-    display: inline-block;
+  .toc-grid li {
+    counter-increment: toc-counter;
+    display: flex;
+    align-items: center;
+  }
+
+  .toc-grid a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    font-weight: 500;
     padding: 4px 0;
-    font-weight: 600;
   }
 
-  nav.toc a:hover {
-    text-decoration: underline;
-    color: var(--main-dark);
+  .toc-grid a::before {
+    content: counter(toc-counter) ".";
+    color: var(--accent);
+    font-weight: 700;
+    min-width: 22px;
   }
 
-  h2.section-title {
-    color: var(--main-dark);
-    font-size: 22px;
-    margin: 40px 0 16px;
+  .toc-grid a:hover {
+    transform: translateX(-4px);
+    color: var(--primary);
+  }
+
+  /* Section Styles */
+  section {
+    margin-bottom: 25px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 35px 0 16px;
     padding-bottom: 8px;
-    border-bottom: 3px solid var(--accent);
+    border-bottom: 2px solid var(--border);
   }
 
-  h3 {
-    color: var(--main);
-    margin: 22px 0 10px;
-    font-size: 18px;
+  .section-num {
+    background: var(--primary);
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-dark);
   }
 
   .card {
-    background: var(--card);
+    background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px 26px;
-    margin: 16px 0;
-    box-shadow: 0 2px 8px rgba(16, 44, 66, 0.04);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    box-shadow: var(--shadow-sm);
   }
 
+  h3 {
+    color: var(--primary);
+    font-size: 17.5px;
+    font-weight: 700;
+    margin: 20px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  h3:first-child {
+    margin-top: 0;
+  }
+
+  /* Lists */
   ul, ol {
-    padding-right: 24px;
+    padding-right: 22px;
     margin: 10px 0;
   }
 
   li {
-    margin: 6px 0;
+    margin: 8px 0;
+    color: var(--text-main);
   }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 14px 0;
-    background: var(--card);
+  li strong {
+    color: var(--primary-dark);
   }
 
-  th, td {
+  /* Steps list */
+  .steps-list {
+    list-style: none;
+    padding-right: 0;
+    counter-reset: step-counter;
+  }
+
+  .steps-list > li {
+    counter-increment: step-counter;
+    position: relative;
+    padding-right: 38px;
+    margin-bottom: 16px;
+  }
+
+  .steps-list > li::before {
+    content: counter(step-counter);
+    position: absolute;
+    right: 0;
+    top: 2px;
+    width: 26px;
+    height: 26px;
+    background: var(--primary-light);
+    color: var(--primary);
     border: 1px solid var(--border);
-    padding: 12px 14px;
-    text-align: right;
-    vertical-align: top;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13.5px;
+    font-weight: 700;
   }
 
-  th {
-    background: var(--soft);
-    color: var(--main-dark);
-    font-weight: bold;
-  }
-
-  tr:nth-child(even) td {
-    background: #fafcfe;
-  }
-
-  .note, .tip, .ok {
+  /* Callout boxes */
+  .box {
     border-radius: 10px;
     padding: 14px 18px;
-    margin: 14px 0;
+    margin: 16px 0;
+    font-size: 15px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
   }
 
-  .note { background: #fff8e6; border: 1px solid #f0d48a; color: #5c4300; }
-  .tip { background: #e8f3fb; border: 1px solid #a7cfe6; color: #083f57; }
-  .ok { background: #e8f6ee; border: 1px solid #a8dcc2; color: #0f5132; }
-
-  .link {
-    color: var(--main);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--main);
+  .box-tip {
+    background-color: var(--primary-light);
+    border: 1px solid #bfd9ee;
+    color: var(--primary-dark);
   }
 
-  .link:hover {
-    border-bottom-style: solid;
+  .box-note {
+    background-color: var(--note-bg);
+    border: 1px solid var(--note-border);
+    color: var(--note-text);
+  }
+
+  /* Contact Section */
+  .contact-card {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    color: #ffffff;
+    border-radius: calc(var(--radius) * 1.3);
+    padding: 35px 30px;
+    margin-top: 45px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .contact-card h2 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .contact-card p {
+    opacity: 0.92;
+    margin-bottom: 12px;
+  }
+
+  .contact-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin: 22px 0;
+  }
+
+  .contact-box {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .contact-box-title {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-bottom: 4px;
+  }
+
+  .contact-box-val {
+    font-size: 15px;
+    font-weight: 700;
+    direction: ltr;
+    text-align: left;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
   }
 
   .copy-btn {
-    background: var(--main);
-    color: #ffffff;
+    background: var(--accent);
+    color: #1e293b;
     border: none;
-    border-radius: 8px;
-    padding: 5px 12px;
-    margin-right: 8px;
-    cursor: pointer;
+    border-radius: 6px;
+    padding: 6px 12px;
     font-size: 13px;
     font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    align-self: flex-start;
   }
 
   .copy-btn:hover {
-    background: var(--main-dark);
+    background: var(--accent-hover);
   }
 
   .copy-btn.copied {
-    background: var(--ok);
-  }
-
-  .contact {
-    background: linear-gradient(135deg, var(--main-dark) 0%, var(--main) 100%);
+    background: #22c55e;
     color: #ffffff;
-    border-radius: 18px;
-    padding: 36px 32px;
-    margin-top: 48px;
-    box-shadow: 0 8px 24px rgba(8, 63, 87, 0.22);
   }
 
-  .contact h2 {
-    margin-top: 0;
-    color: #ffffff;
-    border-bottom: 2px solid var(--accent);
-    padding-bottom: 8px;
-    display: inline-block;
+  .actions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
   }
 
-  .contact h3 { color: #ffffff; }
-
-  .btn-contact {
+  .btn-action {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.14);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    color: #ffffff;
-    border-radius: 10px;
     padding: 10px 18px;
-    margin: 6px 4px;
-    font-size: 15px;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-
-  .btn-contact:hover { background: rgba(255, 255, 255, 0.26); }
-  .btn-wa:hover { background: #1faa5c; border-color: #1faa5c; }
-  .btn-tg:hover { background: #229ed9; border-color: #229ed9; }
-  .btn-em:hover { background: #c0392b; border-color: #c0392b; }
-
-  .dev-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin: 18px 0;
-  }
-
-  .dev-item {
-    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14.5px;
+    color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 10px;
-    padding: 10px 16px;
-    direction: ltr;
-    text-align: left;
+    background: rgba(255, 255, 255, 0.12);
+    transition: all 0.2s ease;
   }
 
-  .dev-item span {
-    display: block;
-    font-size: 12px;
-    opacity: 0.85;
-    direction: rtl;
-    text-align: right;
+  .btn-action:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    transform: translateY(-2px);
   }
 
+  .btn-wa:hover { background: #25d366; border-color: #25d366; }
+  .btn-tg:hover { background: #0088cc; border-color: #0088cc; }
+  .btn-em:hover { background: #ea4335; border-color: #ea4335; }
+
+  /* Footer */
   .footer {
     text-align: center;
-    color: var(--muted);
-    font-size: 13.5px;
-    margin-top: 30px;
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
   }
 
-  .step {
-    font-weight: bold;
-    color: var(--main-dark);
+  /* Back to top button */
+  .back-to-top {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    background: var(--primary);
+    color: #ffffff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    border: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
   }
 
-  @media (max-width: 680px) {
-    header.hero { padding: 28px 20px; }
-    header.hero h1 { font-size: 22px; }
-    nav.toc ol { columns: 1; }
-    .wrap { padding: 16px 12px 40px; }
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .back-to-top:hover {
+    background: var(--accent);
+    color: #1e293b;
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 30px 20px; }
+    .hero h1 { font-size: 24px; }
+    .hero p.lead { font-size: 15.5px; }
+    .card { padding: 18px 20px; }
+    .toc-card { padding: 20px; }
+    .section-title { font-size: 19px; }
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
+<div class="container">
 
+<!-- HERO BANNER -->
 <header class="hero" role="banner">
-  <h1>دليل الاستخدام — «بوابة القراءة والمعرفة» للأندرويد</h1>
-  <p><strong>RKGate (Reading and Knowledge Gate)</strong> — تطبيق أندرويد عربي مجاني لتصفح كتب المكتبة الشاملة ومكتبة هنداوي، والبحث فيها، وقراءتها دون إنترنت بعد تحميلها، مع موسوعات وأخبار ومفضلة وعلامات وتحديث تلقائي.</p>
-  <p>الإصدار الحالي: <strong>1.2.6</strong> — يعمل مباشرة دون حساب أو تسجيل.</p>
-  <div class="badge-container" aria-label="مميزات التطبيق الرئيسية">
-    <span class="badge">كتب الشاملة وهنداوي</span>
-    <span class="badge">قراءة دون إنترنت</span>
-    <span class="badge">بحث داخل الكتب</span>
-    <span class="badge">موسوعات وأخبار</span>
-    <span class="badge">متوافق مع قارئات الشاشة</span>
-    <span class="badge">تحديث تلقائي</span>
+  <div class="version-tag">الإصدار 1.2.6 — يعمل مباشرة دون حساب</div>
+  <h1>دليل استخدام «بوابة القراءة والمعرفة» (RKGate)</h1>
+  <p class="lead">
+    <strong>RKGate (Reading and Knowledge Gate)</strong> — تطبيق أندرويد عربي مجاني مصمم لتصفح كتب المكتبة الشاملة ومؤسسة هنداوي، مع إمكانية البحث المتقدم داخل الكتب، والقراءة أوفلاين دون إنترنت، ومتابعة الموسوعات والأخبار والمفضلة بنظام تحديث ذاتي وتوافق كامل مع قارئات الشاشة للمكفوفين.
+  </p>
+  <div class="badges-grid" aria-label="أهم ميزات التطبيق">
+    <span class="badge">📚 المكتبة الشاملة وهنداوي</span>
+    <span class="badge">⚡ قراءة أوفلاين دون إنترنت</span>
+    <span class="badge">🔍 بحث فوري داخل الكتب</span>
+    <span class="badge">🌐 موسوعات وأخبار عالمية</span>
+    <span class="badge">♿ توافق تام مع قارئات الشاشة</span>
+    <span class="badge">🔄 تحديث تلقائي ذكي</span>
   </div>
 </header>
 
-<nav class="toc" aria-label="فهرس الدليل">
-  <h2>فهرس الدليل</h2>
-  <ol>
-    <li><a href="#start">البداية: أول تشغيل</a></li>
-    <li><a href="#home">الشاشة الرئيسية</a></li>
-    <li><a href="#browse">تصفح الكتب وفتحها</a></li>
-    <li><a href="#read">شاشة القراءة</a></li>
-    <li><a href="#search">البحث بأنواعه</a></li>
-    <li><a href="#info">مركز المعلومات والأخبار</a></li>
-    <li><a href="#library">المفضلة والكتب المحملة</a></li>
-    <li><a href="#marks">العلامات والتعليقات والمرجعيات</a></li>
-    <li><a href="#settings">الإعدادات</a></li>
-    <li><a href="#updates">التحديثات</a></li>
-    <li><a href="#windows">نسخة الويندوز</a></li>
-    <li><a href="#faq">أسئلة شائعة</a></li>
-    <li><a href="#sources">المصادر</a></li>
-    <li><a href="#dev">المطوّر والتواصل</a></li>
+<!-- TABLE OF CONTENTS -->
+<nav class="toc-card" aria-label="فهرس الدليل">
+  <h2>📑 محتويات الدليل</h2>
+  <ol class="toc-grid">
+    <li><a href="#sec-1">البداية: أول تشغيل</a></li>
+    <li><a href="#sec-2">الشاشة الرئيسية ومكوناتها</a></li>
+    <li><a href="#sec-3">تصفح الكتب والتحميل</a></li>
+    <li><a href="#sec-4">شاشة القراءة وأدواتها</a></li>
+    <li><a href="#sec-5">أنظمة البحث الثلاثة</a></li>
+    <li><a href="#sec-6">مركز المعلومات والأخبار</a></li>
+    <li><a href="#sec-7">المفضلة والمكتبة المحملة</a></li>
+    <li><a href="#sec-8">العلامات، المرجعيات والتعليقات</a></li>
+    <li><a href="#sec-9">إعدادات التطبيق وتخصيصه</a></li>
+    <li><a href="#sec-10">نظام التحديثات التلقائية</a></li>
+    <li><a href="#sec-11">إصدار الويندوز (قريباً)</a></li>
+    <li><a href="#sec-12">الأسئلة الشائعة (FAQ)</a></li>
+    <li><a href="#sec-13">المصادر المعتمدة</a></li>
+    <li><a href="#sec-14">المطور وقنوات التواصل</a></li>
   </ol>
 </nav>
 
 <main>
 
-<section id="start" aria-labelledby="start-title">
-  <h2 class="section-title" id="start-title">١) البداية: أول تشغيل</h2>
-  <div class="card">
-    <ol>
-      <li><span class="step">افتح التطبيق:</span> تظهر أقسام المكتبات مرتبة أبجدياً.</li>
-      <li><span class="step">لا إنترنت؟</span> تحتاج التصفح والبحث والتحقق من التحديثات إلى إنترنت، أما كتبك المحملة والمفضلة والعلامات فتعمل دائماً.</li>
-      <li><span class="step">زر الرجوع في جهازك:</span> يرجع خطوة للخلف داخل التطبيق، وفي الشاشة الرئيسية يسألك قبل الخروج.</li>
-    </ol>
-  </div>
-</section>
+  <!-- 1. START -->
+  <section id="sec-1">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2 class="section-title">البداية: أول تشغيل</h2>
+    </div>
+    <div class="card">
+      <ol class="steps-list">
+        <li><strong>فتح التطبيق:</strong> عند التشغيل الأول تظهر الأقسام الرئيسية للمكتبات مرتبة هجائياً لسهولة التصفح.</li>
+        <li><strong>حالة الاتصال بالإنترنت:</strong> يلزم الاتصال بالإنترنت لتصفح الأقسام لأول مرة، وإجراء البحث العام، وتنزيل الكتب، وتفقد التحديثات. أما الكتب المحملة ومحفوظاتك فتعمل دائماً دون إنترنت.</li>
+        <li><strong>التنقل وزر الرجوع:</strong> زر الرجوع في جهازك ينقلك للخطوة السابقة، وعند الضغط عليه في الشاشة الرئيسية يُظهر تنبيهاً لتأكيد الخروج ومنع الإغلاق غير المقصود.</li>
+      </ol>
+    </div>
+  </section>
 
-<section id="home" aria-labelledby="home-title">
-  <h2 class="section-title" id="home-title">٢) الشاشة الرئيسية</h2>
-  <div class="card">
-    <ul>
-      <li><strong>قائمة التنقل (☰):</strong> الرئيسية، الإعدادات، المعلومات، المكتبة (المفضلة والمحملة)، حول، خروج.</li>
-      <li><strong>البحث العام:</strong> اكتب كلمة البحث واضغط «بحث» للبحث في كل المكتبات، وزر «إيقاف» يلغي العملية الجارية.</li>
-      <li><strong>مزيد من الكتب:</strong> زر أسفل القائمة يعرض دفعات إضافية عند الحاجة، وزر «إغلاق نتائج البحث» يعيدك لما كنت فيه.</li>
-      <li><strong>شريط الحالة:</strong> يوضح عدد النتائج والرسائل، وهو معلن لقارئات الشاشة.</li>
-    </ul>
-  </div>
-</section>
+  <!-- 2. HOME -->
+  <section id="sec-2">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2 class="section-title">الشاشة الرئيسية</h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li><strong>القائمة الجانبية (☰):</strong> تضم الوصول السريع إلى: الرئيسية، الإعدادات، مركز المعلومات، المكتبة (المفضلة والمحمّلة)، حول التطبيق، وزر الخروج.</li>
+        <li><strong>البحث العام:</strong> حقل رئيسي يتيح البحث في جميع المكتبات والأقسام المتاحة دفعة واحدة، مع توفير زر «إيقاف» لإلغاء المعالجة الجارية في أي لحظة.</li>
+        <li><strong>إدارة النتائج:</strong> زر «مزيد من الكتب» يظهر أسفل القائمة لتحميل دفعات إضافية، وزر «إغلاق نتائج البحث» يعيدك للشاشة الرئيسية السابقة.</li>
+        <li><strong>شريط الحالة والإشعارات:</strong> شريط سفلي يوضح عدد النتائج وحالة الاتصال، وهو مبرمج ليكون ناطقاً ومعلناً تلقائياً لبرامج قراءة الشاشة (TalkBack / Jieshuo).</li>
+      </ul>
+    </div>
+  </section>
 
-<section id="browse" aria-labelledby="browse-title">
-  <h2 class="section-title" id="browse-title">٣) تصفح الكتب وفتحها</h2>
-  <div class="card">
-    <ol>
-      <li><span class="step">اختر القسم:</span> المس القسم المطلوب من القائمة.</li>
-      <li><span class="step">اختر الكتاب:</span> المس الكتاب لفتحه والبدء من آخر صفحة وقفت عندها.</li>
-      <li><span class="step">خيارات الكتاب (ضغطة مطولة):</span> البطاقة التعريفية، إضافة للمفضلة أو حذفها، تحميل الكتاب نصياً للقراءة دون إنترنت أو حذف نسخته، فتحه في المتصفح.</li>
-    </ol>
-    <div class="tip">💡 البحث داخل قسم يعرض كتبه فقط، ومسح حقل البحث يعيد عرض كل كتب القسم.</div>
-  </div>
-</section>
-
-<section id="read" aria-labelledby="read-title">
-  <h2 class="section-title" id="read-title">٤) شاشة القراءة</h2>
-  <div class="card">
-    <h3>أعلى الشاشة</h3>
-    <ul>
-      <li><strong>اسم الكتاب</strong>، وتحته <strong>رقم الصفحة من الإجمالي</strong>، وتحته <strong>الموضوع الحالي</strong> — كل معلومة في سطر مستقل.</li>
-      <li><strong>القوائم العلوية بالترتيب:</strong> التصفح، تحرير، عرض، العلامات، الكتاب.</li>
-      <li><strong>البحث داخل الكتاب:</strong> اكتب الكلمة واضغط «بحث» للانتقال لمواضعها.</li>
-    </ul>
-    <h3>التنقل بين الصفحات</h3>
-    <ul>
-      <li><strong>الشريط السفلي:</strong> زر «السابقة» على طرف، وزر «التالية» على الطرف الآخر، وبينهما <strong>صندوق اختيار الصفحة</strong> للقفز لأي صفحة مباشرة.</li>
-      <li>الأولى والأخيرة موجودتان داخل قائمة «التصفح» مع الفهرس والمحتويات.</li>
-    </ul>
-    <h3>التعامل مع السطور</h3>
-    <ul>
-      <li><strong>لمس السطر:</strong> يفتح قائمة: إضافة علامة، إضافة مرجعية، نسخ، مشاركة.</li>
-      <li><strong>الضغطة المطولة:</strong> تدخل وضع التحديد لتحديد عدة سطور ثم نسخها أو مشاركتها معاً.</li>
-    </ul>
-    <h3>تخصيص القراءة</h3>
-    <ul>
-      <li>من قائمة «تحرير»: حجم الخط (لهذه الجلسة)، إظهار أو إخفاء التشكيل، نسخ الصفحة كاملة أو مشاركتها.</li>
-      <li>من قائمة «عرض»: الوضع الليلي، وملء الشاشة للتركيز في النص فقط.</li>
-      <li>يتذكر التطبيق آخر صفحة قرأتها في كل كتاب ويعيدك إليها تلقائياً.</li>
-    </ul>
-  </div>
-</section>
-
-<section id="search" aria-labelledby="search-title">
-  <h2 class="section-title" id="search-title">٥) البحث بأنواعه</h2>
-  <div class="card">
-    <ul>
-      <li><strong>بحث شامل:</strong> من الشاشة الرئيسية في كل المكتبات والأقسام.</li>
-      <li><strong>بحث داخل القسم:</strong> وأنت تعرض كتب قسم معين يقتصر البحث عليها.</li>
-      <li><strong>بحث داخل الكتاب:</strong> من شاشة القراءة، ويعرض رقم الصفحة ومقتطفاً مع زر انتقال مباشر.</li>
-    </ul>
-  </div>
-</section>
-
-<section id="info" aria-labelledby="info-title">
-  <h2 class="section-title" id="info-title">٦) مركز المعلومات والأخبار</h2>
-  <div class="card">
-    <ol>
-      <li><span class="step">اختر المصدر:</span> موسوعة (ويكيبيديا العربية والإنجليزية، ويكاموس، ويكي الاقتباس، ويكي مصدر، المعرفة) أو موقعاً إخبارياً وتقنياً.</li>
-      <li><span class="step">ابحث أو استكشف:</span> اكتب موضوعك واضغط «بحث»، أو جرب «نتائج عشوائية».</li>
-      <li><span class="step">اقرأ:</span> المس النتيجة لفتحها في شاشة القراءة، أو افتحها في المتصفح. الضغطة المطولة تضيفها للمفضلة.</li>
-    </ol>
-  </div>
-</section>
-
-<section id="library" aria-labelledby="library-title">
-  <h2 class="section-title" id="library-title">٧) المفضلة والكتب المحملة</h2>
-  <div class="card">
-    <ul>
-      <li><strong>المفضلة:</strong> كتبك ونتائجك المحفوظة في مكان واحد، تفتح باللمس وتُحذف بالضغطة المطولة.</li>
-      <li><strong>الكتب المحملة:</strong> نُسخ نصية كاملة على جهازك تُقرأ دون إنترنت، مع بطاقتها وعدد صفحاتها.</li>
-    </ul>
-  </div>
-</section>
-
-<section id="marks" aria-labelledby="marks-title">
-  <h2 class="section-title" id="marks-title">٨) العلامات والتعليقات والمرجعيات</h2>
-  <div class="card">
-    <ul>
-      <li><strong>علامة على سطر:</strong> بلون (أصفر، أحمر، أزرق، أخضر، وردي) مع ملاحظة اختيارية.</li>
-      <li><strong>تعليق على صفحة:</strong> يظهر أعلى النص ويمكن استعراض كل التعليقات وحذفها.</li>
-      <li><strong>مرجعية:</strong> تحفظ موضعك في الموضوعات وتقفز إليها لاحقاً.</li>
-    </ul>
-  </div>
-</section>
-
-<section id="settings" aria-labelledby="settings-title">
-  <h2 class="section-title" id="settings-title">٩) الإعدادات</h2>
-  <div class="card">
-    <ul>
-      <li><strong>عامة:</strong> عدد الكتب بالصفحة، التحقق التلقائي من التحديثات، زر «التحقق الآن»، <strong>الفترة بين التحقق (بالدقائق — تكتب أي عدد من 1 فأكثر، والافتراضي 10)</strong>، إبقاء الشاشة مضيئة أثناء القراءة.</li>
-      <li><strong>المظهر:</strong> فاتح أو داكن، حجما خط القوائم والقارئ، عائلة الخط، لون خلفية القراءة.</li>
-      <li><strong>النص:</strong> إظهار التشكيل، وطريقة تقسيم السطور (سطراً بسطر، فقرات، جمل، مقطع واحد).</li>
-      <li><strong>الأصوات:</strong> أصوات البحث والتنقل والإجراءات، مع زر معاينة.</li>
-    </ul>
-  </div>
-</section>
-
-<section id="updates" aria-labelledby="updates-title">
-  <h2 class="section-title" id="updates-title">١٠) التحديثات</h2>
-  <div class="card">
-    <ul>
-      <li>يفحص التطبيق التحديثات عند التشغيل، وعند العودة للشاشة الرئيسية، ودورياً حسب الفترة التي حددتها، مع إشعار عند كل إصدار جديد.</li>
-      <li>نافذة التحديث تعرض رقم الإصدارين والجديد فيه، مع أزرار: <strong>تنزيل داخل البرنامج، تنزيل في المتصفح، نسخ الرابط، ليس الآن</strong> — ونسخة الأندرويد تُختار تلقائياً.</li>
-      <li>بعد التنزيل يبدأ <strong>التثبيت تلقائياً</strong>: إن طلب النظام إذن التثبيت فعّله وسيكمل التثبيت وحده، ويُحذف ملف التحديث بعد التثبيت.</li>
-    </ul>
-  </div>
-</section>
-
-<section id="windows" aria-labelledby="windows-title">
-  <h2 class="section-title" id="windows-title">١١) نسخة الويندوز</h2>
-  <div class="card">
-    <p>هذا الدليل خاص بنسخة الأندرويد — وسوف يتم إتاحة التطبيق على الويندوز قريباً إن شاء الله.</p>
-  </div>
-</section>
-
-<section id="faq" aria-labelledby="faq-title">
-  <h2 class="section-title" id="faq-title">١٢) أسئلة شائعة</h2>
-  <div class="card">
-    <h3>لا تظهر الأقسام أو النتائج؟</h3>
-    <p>تأكد من الإنترنت ثم أعد المحاولة — يعيد التطبيق المحاولة تلقائياً عند التعثر اللحظي.</p>
-    <h3>هل أقرأ دون إنترنت؟</h3>
-    <p>نعم للكتب المحملة والمفضلة والعلامات — أما التصفح والبحث والتحديثات فيحتاج إنترنت.</p>
-    <h3>أين ملفات التحديث؟</h3>
-    <p>داخل التطبيق فقط ولا تشغل بالك بها — تُثبَّت تلقائياً ثم تُحذف.</p>
-  </div>
-</section>
-
-<section id="sources" aria-labelledby="sources-title">
-  <h2 class="section-title" id="sources-title">١٣) المصادر</h2>
-  <div class="card">
-    <p>محتوى التطبيق من مصادر مفتوحة للعموم، ملك لأصحابها، والشكر موصول لها:</p>
-    <ul>
-      <li>المكتبة الشاملة: <a class="link" href="https://shamela.ws" target="_blank" rel="noopener">shamela.ws</a></li>
-      <li>مكتبة هنداوي: <a class="link" href="https://www.safahat.org" target="_blank" rel="noopener">safahat.org</a></li>
-      <li>ويكيبيديا العربية والإنجليزية، ويكاموس، ويكي الاقتباس، ويكي مصدر، موسوعة المعرفة</li>
-      <li>مصادر إخبارية وتقنية: RT عربي، BBC عربي، البوابة العربية للأخبار التقنية، التقنية بلا حدود</li>
-    </ul>
-  </div>
-</section>
-
-<section id="dev" aria-labelledby="dev-title">
-  <h2 class="section-title" id="dev-title">١٤) المطوّر والتواصل</h2>
-  <div class="contact">
-    <h2>✍️ تطوير وإعداد</h2>
-    <p>برمجة وتطوير: <strong>أحمد حسن عبد النبي (Ahmed Hassan)</strong></p>
-    <p>يسعدنا استقبال مقترحاتكم واستفساراتكم والإبلاغ عن الملاحظات في أي وقت.</p>
-
-    <h3>📇 بيانات التواصل المباشر</h3>
-    <div class="dev-info">
-      <div class="dev-item">
-        <span>رقم الواتساب / الهاتف</span>
-        +20 155 886 3325
-        <button class="copy-btn" onclick="copyText('+201558863325', this)" aria-label="نسخ رقم الهاتف">+201558863325 📋 نسخ</button>
-      </div>
-      <div class="dev-item">
-        <span>اسم المستخدم في تيليجرام</span>
-        @ah3376
-        <button class="copy-btn" onclick="copyText('ah3376', this)" aria-label="نسخ اسم تيليجرام">ah3376 📋 نسخ</button>
-      </div>
-      <div class="dev-item">
-        <span>البريد الإلكتروني</span>
-        ah2635670@gmail.com
-        <button class="copy-btn" onclick="copyText('ah2635670@gmail.com', this)" aria-label="نسخ البريد الإلكتروني">نسخ البريد 📋</button>
+  <!-- 3. BROWSE -->
+  <section id="sec-3">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2 class="section-title">تصفح الكتب والتحميل</h2>
+    </div>
+    <div class="card">
+      <ol class="steps-list">
+        <li><strong>اختيار القسم:</strong> انقر على التصنيف المطلوب من الواجهة لعرض الكتب المندرجة تحته.</li>
+        <li><strong>فتح الكتاب:</strong> انقر نقرة واحدة لفتح الكتاب؛ سيبدأ القارئ تلقائياً من آخر صفحة توقفت عندها.</li>
+        <li><strong>قائمة الخيارات السريعة (ضغطة مطولة على الكتاب):</strong>
+          <ul>
+            <li>عرض البطاقة التعريفية والبيانات للكتاب.</li>
+            <li>إضافة الكتاب إلى المفضلة أو حذفه منها.</li>
+            <li><strong>تحميل الكتاب كاملاً:</strong> لحفظ نسخة نصية محلية للقراءة بدون إنترنت نهائياً.</li>
+            <li>فتح رابط الكتاب في المتصفح الخارجي.</li>
+          </ul>
+        </li>
+      </ol>
+      <div class="box box-tip">
+        💡 <strong>تلميح:</strong> البحث داخل أي قسم محدد يعرض نتائجه من كتب ذلك القسم فقط، ومسح حقل البحث يعيد القائمة الكاملة تلقائياً.
       </div>
     </div>
+  </section>
 
-    <h3>📞 روابط التواصل السريع</h3>
-    <p>
-      <a class="btn-contact btn-wa" href="https://wa.me/201558863325" target="_blank" rel="noopener">💬 واتساب مباشر</a>
-      <a class="btn-contact btn-tg" href="https://t.me/ah3376" target="_blank" rel="noopener">✈️ تيليجرام مباشر</a>
-      <a class="btn-contact btn-em" href="mailto:ah2635670@gmail.com">📧 مراسلة بالبريد</a>
-    </p>
-  </div>
-</section>
+  <!-- 4. READ -->
+  <section id="sec-4">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2 class="section-title">شاشة القراءة وأدواتها</h2>
+    </div>
+    <div class="card">
+      <h3>1. الشريط العلوي</h3>
+      <ul>
+        <li>يعرض <strong>عنوان الكتاب</strong>، يليه <strong>رقم الصفحة الحالية / الإجمالي</strong>، ثم <strong>اسم الباب أو الموضوع</strong> — كل معلومة بسطر مستقل لسهولة التتبع.</li>
+        <li><strong>القوائم العلوية المنسدلة:</strong> (التصفح، تحرير، عرض، العلامات، الكتاب).</li>
+        <li><strong>البحث داخل الكتاب:</strong> للبحث عن الكلمات والعبارات بدقة والانتقال المباشر لأماكن ورودها.</li>
+      </ul>
+
+      <h3>2. التنقل بين الصفحات</h3>
+      <ul>
+        <li><strong>الشريط السفلي:</strong> يحتوي على زري «السابقة» و«التالية»، ويتوسطهما <strong>صندوق اختيار الصفحة</strong> لإدخال رقم أي صفحة والانتقال إليها فوراً.</li>
+        <li>أزرار الانتقال لـ (الصفحة الأولى / الأخيرة) والفهرس الكامل تقع داخل قائمة «التصفح».</li>
+      </ul>
+
+      <h3>3. التفاعل مع النصوص والسطور</h3>
+      <ul>
+        <li><strong>الضغط على السطر:</strong> يفتح نافذة سريعة لإضافة علامة ملونة، إضافة مرجعية، نسخ السطر، أو مشاركته.</li>
+        <li><strong>الضغطة المطولة على السطر:</strong> تُفعّل وضع التحديد المتعدد لتحديد عدة أسطر متتالية ونسخها أو مشاركتها جملة واحدة.</li>
+      </ul>
+
+      <h3>4. تخصيص تجربة القراءة</h3>
+      <ul>
+        <li><strong>من قائمة «تحرير»:</strong> تكبير/تصغير حجم الخط للجلسة الحالية، إظهار أو إخفاء حركات التشكيل، نسخ الصفحة كاملة، أو مشاركتها.</li>
+        <li><strong>من قائمة «عرض»:</strong> التبديل للوضع الليلي المريح، أو تفعيل وضع ملء الشاشة لإخفاء كل القوائم والتركيز على المتن فقط.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5. SEARCH -->
+  <section id="sec-5">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2 class="section-title">أنظمة البحث بأنواعه</h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li><strong>البحث العام الشامل:</strong> متاح في الواجهة الرئيسية للبحث عبر كافة المكتبات والتصنيفات في وقت واحد.</li>
+        <li><strong>البحث المخصص في قسم:</strong> يعمل أثناء استعراض قسم معين لتضييق نطاق البحث على عناوينه فقط.</li>
+        <li><strong>البحث الدقيق داخل نص الكتاب:</strong> يعمل من شاشة القراءة، ويعرض رقم الصفحة وجزءاً من النص المقتطف مع زر للانتقال الفوري لموضع الكلمة.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6. INFO CENTER -->
+  <section id="sec-6">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2 class="section-title">مركز المعلومات والأخبار</h2>
+    </div>
+    <div class="card">
+      <ol class="steps-list">
+        <li><strong>اختيار المصدر:</strong> اختر الموسوعة المطلوبة (ويكيبيديا العربية/الإنجليزية، ويكاموس، ويكي الاقتباس، ويكي مصدر، المعرفة) أو قسماً إخبارياً وتقنياً.</li>
+        <li><strong>البحث والاستكشاف:</strong> اكتب موضوعك واضغط «بحث»، أو استخدم خيار «مقالة عشوائية» لاستكشاف معلومات جديدة.</li>
+        <li><strong>القراءة والحفظ:</strong> اضغط على النتيجة لفتحها داخل قارئ التطبيق أو فتحها في المتصفح الخارجي، وتتيح الضغطة المطولة حفظ المقال في المفضلة.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 7. LIBRARY & DOWNLOADS -->
+  <section id="sec-7">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2 class="section-title">المفضلة والكتب المحملة</h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li><strong>قسم المفضلة:</strong> يجمع الكتب والمقالات التي قمت بحفظها لسرعة الوصول إليها؛ تُفتح بنقرة واحدة، وتُحذف بالضغطة المطولة.</li>
+        <li><strong>قسم الكتب المحملة:</strong> يضم النسخ النصية الكاملة المخزنة على ذاكرة الهاتف؛ تُقرأ أوفلاين دون إنترنت مع توفر بطاقة الكتاب وعدد صفحاته وخيار حذف النسخة لتوفير المساحة.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 8. MARKS & NOTES -->
+  <section id="sec-8">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2 class="section-title">العلامات والتعليقات والمرجعيات</h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li><strong>العلامات الملونة (Bookmarks):</strong> تلوين سطر محدد بأحد الألوان الخمسة (أصفر، أحمر، أزرق، أخضر، وردي) مع إمكانية إرفاق ملاحظة مخصصة.</li>
+        <li><strong>التعليقات على الصفحات:</strong> تدوين هوامش وملاحظات تظهر أعلى الصفحة ويمكن مراجعتها وإدارتها وحذفها مجتمعة من قائمة العلامات.</li>
+        <li><strong>المرجعيات (References):</strong> حفظ مواضع معينة داخل الأبواب والفهارس للرجوع السريع إليها بضغطة زر.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9. SETTINGS -->
+  <section id="sec-9">
+    <div class="section-header">
+      <span class="section-num">9</span>
+      <h2 class="section-title">الإعدادات والتخصيص</h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li><strong>عامة:</strong> تحديد عدد الكتب المعروضة في الصفحة، تفعيل الفحص الدوري للتحديثات وزر «التحقق الآن»، وتحديد <strong>الفترة بين الفحص (بالدقائق — تبدأ من دقيقة واحدة والافتراضي 10 دقائق)</strong>، مع خيار إبقاء الشاشة مضاءة أثناء القراءة.</li>
+        <li><strong>المظهر والعرض:</strong> التبديل بين المظهر الفاتح والداكن، ضبط حجم خط القوائم وحجم خط القارئ بشكل دائم، تغيير نوع الخط ولون الخلفية.</li>
+        <li><strong>معالجة النصوص:</strong> خيار إظهار أو إخفاء حركات التشكيل، واختيار أسلوب تقسيم الأسطر (سطر بسطر، فقرات مدمجة، جمل، أو مقطع واحد).</li>
+        <li><strong>المؤثرات الصوتية:</strong> تفعيل أو تعطيل أصوات البحث والتنقل بين الصفحات والأزرار مع ميزة معاينة الصوت.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 10. UPDATES -->
+  <section id="sec-10">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <h2 class="section-title">نظام التحديثات</h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li><strong>فحص تلقائي ذكي:</strong> يتحقق التطبيق من وجود إصدارات جديدة عند التشغيل، وعند العودة للشاشة الرئيسية، ودورياً بحسب الدقائق المحددة في الإعدادات.</li>
+        <li><strong>نافذة التحديث الشاملة:</strong> تعرض رقم الإصدار الحالي والجديد وأبرز التحسينات، مع 4 خيارات: (تنزيل داخل البرنامج، تنزيل في المتصفح، نسخ الرابط، ليس الآن) مع جلب النسخة المناسبة لمعمارية جهازك آلياً.</li>
+        <li><strong>تثبيت وحذف تلقائي:</strong> بعد اكتمال التنزيل تبدأ عملية التثبيت تلقائياً، وبعد انتهاء التثبيت يقوم التطبيق بحذف ملف التثبيت المؤقت لتوفير مساحة الهاتف.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 11. WINDOWS -->
+  <section id="sec-11">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <h2 class="section-title">نسخة نظام ويندوز (Windows)</h2>
+    </div>
+    <div class="card">
+      <p>هذا الدليل مخصص حالياً لنسخة <strong>الأندرويد (Android)</strong>. ويجري العمل على إتاحة وتطوير نسخة مخصصة لأجهزة الكمبيوتر ونظام ويندوز قريباً بإذن الله.</p>
+    </div>
+  </section>
+
+  <!-- 12. FAQ -->
+  <section id="sec-12">
+    <div class="section-header">
+      <span class="section-num">12</span>
+      <h2 class="section-title">الأسئلة الشائعة (FAQ)</h2>
+    </div>
+    <div class="card">
+      <h3>❓ لا تظهر الأقسام أو نتائج البحث، ما الحل؟</h3>
+      <p>تأكد من اتصال هاتفك بالإنترنت ثم أعد المحاولة؛ يحتوي التطبيق على نظام إعادة محاولة تلقائي عند حدوث أي انقطاع لحظي في الشبكة.</p>
+
+      <h3>❓ هل يمكنني استخدام التطبيق كاملاً بدون إنترنت؟</h3>
+      <p>نعم، جميع الكتب التي قمت بتحميلها، والمفضلة، والعلامات المرجعية تعمل بالكامل أوفلاين. يلزم الإنترنت فقط أثناء تصفح الأقسام لأول مرة، وإجراء البحث، وتنزيل الكتب الجديدة، وتفقد التحديثات.</p>
+
+      <h3>❓ أين أجد ملفات التحديث التي تم تنزيلها؟</h3>
+      <p>تتم إدارة ملفات التحديث داخل مسار آمن في التطبيق تلقائياً وتُحذف ذاتياً بمجرد اكتمال التثبيت لضمان عدم شغل أي مساحة إضافية على هاتفك.</p>
+    </div>
+  </section>
+
+  <!-- 13. SOURCES -->
+  <section id="sec-13">
+    <div class="section-header">
+      <span class="section-num">13</span>
+      <h2 class="section-title">المصادر المعتمدة</h2>
+    </div>
+    <div class="card">
+      <p>جميع المواد والمحتويات المعروضة مستمدة من مصادر معرفية عامة ومفتوحة، وحقوقها محفوظة لأصحابها ومؤسساتها:</p>
+      <ul>
+        <li><strong>المكتبة الشاملة:</strong> <a href="https://shamela.ws" target="_blank" rel="noopener">shamela.ws</a></li>
+        <li><strong>مؤسسة هنداوي:</strong> <a href="https://www.safahat.org" target="_blank" rel="noopener">safahat.org</a></li>
+        <li><strong>المشاريع المعرفية:</strong> ويكيبيديا، ويكاموس، ويكي الاقتباس، ويكي مصدر، موسوعة المعرفة.</li>
+        <li><strong>المصادر التقنية والإخبارية:</strong> BBC عربي، RT عربي، البوابة العربية للأخبار التقنية، التقنية بلا حدود.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 14. DEV & CONTACT -->
+  <section id="sec-14">
+    <div class="contact-card">
+      <h2>✍️ التطوير والتواصل</h2>
+      <p>تصميم وتطوير وبرمجة: <strong>أحمد حسن عبد النبي (Ahmed Hassan)</strong></p>
+      <p>نرحب دائماً باقتراحاتكم، واستفساراتكم، وملاحظاتكم لتطوير التطبيق باستمرار.</p>
+
+      <div class="contact-items-grid">
+        <div class="contact-box">
+          <div>
+            <div class="contact-box-title">رقم الهاتف / واتساب</div>
+            <div class="contact-box-val">+20 155 886 3325</div>
+          </div>
+          <button class="copy-btn" onclick="copyText('+201558863325', this)" aria-label="نسخ رقم الهاتف">📋 نسخ الرقم</button>
+        </div>
+
+        <div class="contact-box">
+          <div>
+            <div class="contact-box-title">حساب تيليجرام</div>
+            <div class="contact-box-val">@ah3376</div>
+          </div>
+          <button class="copy-btn" onclick="copyText('ah3376', this)" aria-label="نسخ اسم مستخدم تيليجرام">📋 نسخ المعرّف</button>
+        </div>
+
+        <div class="contact-box">
+          <div>
+            <div class="contact-box-title">البريد الإلكتروني</div>
+            <div class="contact-box-val">ah2635670@gmail.com</div>
+          </div>
+          <button class="copy-btn" onclick="copyText('ah2635670@gmail.com', this)" aria-label="نسخ البريد الإلكتروني">📋 نسخ البريد</button>
+        </div>
+      </div>
+
+      <div class="actions-container">
+        <a class="btn-action btn-wa" href="https://wa.me/201558863325" target="_blank" rel="noopener">💬 محادثة واتساب</a>
+        <a class="btn-action btn-tg" href="https://t.me/ah3376" target="_blank" rel="noopener">✈️ مراسلة تيليجرام</a>
+        <a class="btn-action btn-em" href="mailto:ah2635670@gmail.com">📧 إرسال بريد إلكتروني</a>
+      </div>
+    </div>
+  </section>
 
 </main>
 
 <footer class="footer" role="contentinfo">
-  دليل «بوابة القراءة والمعرفة» (RKGate) للأندرويد — الإصدار 1.2.6 · جميع الحقوق محفوظة للمطور.
+  دليل تطبيق «بوابة القراءة والمعرفة» (RKGate) للأندرويد — الإصدار 1.2.6 · جميع الحقوق محفوظة للمطور ©.
 </footer>
 
 </div>
 
+<!-- Back to top button -->
+<button id="backToTop" class="back-to-top" aria-label="الرجوع إلى أعلى الصفحة" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+  ▲
+</button>
+
 <script>
-function copyText(text, btn){
-  var done = function(){
-    var old = btn.textContent;
-    btn.textContent = '✓ تم النسخ';
+// Copy text helper
+function copyText(text, btn) {
+  const originalText = btn.textContent;
+  const onSuccess = () => {
+    btn.textContent = '✓ تم النسخ!';
     btn.classList.add('copied');
-    setTimeout(function(){ btn.textContent = old; btn.classList.remove('copied'); }, 1600);
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.classList.remove('copied');
+    }, 1800);
   };
+
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text, done); });
+    navigator.clipboard.writeText(text).then(onSuccess).catch(() => fallbackCopy(text, onSuccess));
   } else {
-    fallbackCopy(text, done);
+    fallbackCopy(text, onSuccess);
   }
 }
-function fallbackCopy(text, done){
-  var ta = document.createElement('textarea');
+
+function fallbackCopy(text, cb) {
+  const ta = document.createElement('textarea');
   ta.value = text;
   ta.style.position = 'fixed';
   ta.style.opacity = '0';
   document.body.appendChild(ta);
-  ta.focus(); ta.select();
-  try { document.execCommand('copy'); } catch(e){}
+  ta.focus();
+  ta.select();
+  try {
+    document.execCommand('copy');
+    if (cb) cb();
+  } catch (e) {
+    console.error('Copy failed', e);
+  }
   document.body.removeChild(ta);
-  done();
 }
+
+// Show/hide back to top button
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 300) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+});
 </script>
 </body>
 </html>
