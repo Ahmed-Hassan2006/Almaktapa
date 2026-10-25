@@ -235,65 +235,55 @@
     box-shadow: var(--shadow-sm);
   }
 
-  h3 {
-    color: var(--primary);
-    font-size: 17.5px;
-    font-weight: 700;
-    margin: 20px 0 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  h3:first-child {
-    margin-top: 0;
-  }
-
-  /* Lists */
-  ul, ol {
-    padding-right: 22px;
+  /* Structured Numbered Items */
+  .item-list {
+    list-style: none;
+    padding: 0;
     margin: 10px 0;
   }
 
-  li {
-    margin: 8px 0;
+  .item-list > li {
+    position: relative;
+    padding-right: 32px;
+    margin-bottom: 14px;
     color: var(--text-main);
   }
 
-  li strong {
-    color: var(--primary-dark);
-  }
-
-  /* Steps list */
-  .steps-list {
-    list-style: none;
-    padding-right: 0;
-    counter-reset: step-counter;
-  }
-
-  .steps-list > li {
-    counter-increment: step-counter;
-    position: relative;
-    padding-right: 38px;
-    margin-bottom: 16px;
-  }
-
-  .steps-list > li::before {
-    content: counter(step-counter);
+  .item-list > li::before {
+    content: attr(data-num);
     position: absolute;
     right: 0;
     top: 2px;
-    width: 26px;
-    height: 26px;
-    background: var(--primary-light);
-    color: var(--primary);
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13.5px;
     font-weight: 700;
+    color: var(--primary);
+    font-size: 14.5px;
+  }
+
+  .sub-list {
+    list-style: none;
+    padding-right: 18px;
+    margin-top: 6px;
+  }
+
+  .sub-list > li {
+    position: relative;
+    padding-right: 20px;
+    margin-bottom: 6px;
+    color: var(--text-muted);
+  }
+
+  .sub-list > li::before {
+    content: "•";
+    position: absolute;
+    right: 4px;
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  strong {
+    color: var(--primary-dark);
   }
 
   /* Callout boxes */
@@ -303,8 +293,8 @@
     margin: 16px 0;
     font-size: 15px;
     display: flex;
-    gap: 12px;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
   }
 
   .box-tip {
@@ -325,7 +315,7 @@
     color: #ffffff;
     border-radius: calc(var(--radius) * 1.3);
     padding: 35px 30px;
-    margin-top: 45px;
+    margin-top: 25px;
     box-shadow: var(--shadow-lg);
   }
 
@@ -336,15 +326,31 @@
   }
 
   .contact-card p {
-    opacity: 0.92;
+    opacity: 0.94;
     margin-bottom: 12px;
+  }
+
+  /* Community Invite Sub-box inside Contact */
+  .community-invite-box {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin: 20px 0;
+  }
+
+  .community-invite-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 6px;
   }
 
   .contact-items-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 14px;
-    margin: 22px 0;
+    margin: 20px 0;
   }
 
   .contact-box {
@@ -359,7 +365,7 @@
 
   .contact-box-title {
     font-size: 12px;
-    opacity: 0.8;
+    opacity: 0.85;
     margin-bottom: 4px;
   }
 
@@ -485,18 +491,18 @@
 
 <!-- HERO BANNER -->
 <header class="hero" role="banner">
-  <div class="version-tag">الإصدار 1.2.6 — يعمل مباشرة دون حساب</div>
+  <div class="version-tag">منظومة موحدة لنظامي Windows و Android</div>
   <h1>دليل استخدام «بوابة القراءة والمعرفة» (RKGate)</h1>
   <p class="lead">
-    <strong>RKGate (Reading and Knowledge Gate)</strong> — تطبيق أندرويد عربي مجاني مصمم لتصفح كتب المكتبة الشاملة ومؤسسة هنداوي، مع إمكانية البحث المتقدم داخل الكتب، والقراءة أوفلاين دون إنترنت، ومتابعة الموسوعات والأخبار والمفضلة بنظام تحديث ذاتي وتوافق كامل مع قارئات الشاشة للمكفوفين.
+    <strong>RKGate (Reading and Knowledge Gate)</strong> — منصة معرفية عربية شاملة ومتكاملة تجمع بين مكتبات التراث والكتب الحديثة والموسوعات العالمية، وتتيح البحث المتعمق، والتحميل الكامل للمطالعة دون إنترنت، مع محرك نطق صوتي متعدد الخيارات ودعم كامل لقارئات الشاشة.
   </p>
   <div class="badges-grid" aria-label="أهم ميزات التطبيق">
+    <span class="badge">💻 نظام ويندوز & 📱 نظام أندرويد</span>
     <span class="badge">📚 المكتبة الشاملة وهنداوي</span>
-    <span class="badge">⚡ قراءة أوفلاين دون إنترنت</span>
-    <span class="badge">🔍 بحث فوري داخل الكتب</span>
-    <span class="badge">🌐 موسوعات وأخبار عالمية</span>
-    <span class="badge">♿ توافق تام مع قارئات الشاشة</span>
-    <span class="badge">🔄 تحديث تلقائي ذكي</span>
+    <span class="badge">🗣️ محركات قراءة صوتية ذكية (TTS)</span>
+    <span class="badge">⚡ قراءة وتحميل كامل أوفلاين</span>
+    <span class="badge">🔍 بحث فوري وشامل في المتون</span>
+    <span class="badge">♿ توافق متقدم مع قارئات الشاشة</span>
   </div>
 </header>
 
@@ -504,127 +510,133 @@
 <nav class="toc-card" aria-label="فهرس الدليل">
   <h2>📑 محتويات الدليل</h2>
   <ol class="toc-grid">
-    <li><a href="#sec-1">البداية: أول تشغيل</a></li>
-    <li><a href="#sec-2">الشاشة الرئيسية ومكوناتها</a></li>
-    <li><a href="#sec-3">تصفح الكتب والتحميل</a></li>
-    <li><a href="#sec-4">شاشة القراءة وأدواتها</a></li>
-    <li><a href="#sec-5">أنظمة البحث الثلاثة</a></li>
-    <li><a href="#sec-6">مركز المعلومات والأخبار</a></li>
-    <li><a href="#sec-7">المفضلة والمكتبة المحملة</a></li>
-    <li><a href="#sec-8">العلامات، المرجعيات والتعليقات</a></li>
-    <li><a href="#sec-9">إعدادات التطبيق وتخصيصه</a></li>
-    <li><a href="#sec-10">نظام التحديثات التلقائية</a></li>
-    <li><a href="#sec-11">إصدار الويندوز (قريباً)</a></li>
+    <li><a href="#sec-1">فلسفة المنظومة والمنصات المدعومة</a></li>
+    <li><a href="#sec-2">تصفح المكتبات واستعراض الأقسام</a></li>
+    <li><a href="#sec-3">قدرات القراءة وتخصيص المتن</a></li>
+    <li><a href="#sec-4">أنظمة البحث المتعددة</a></li>
+    <li><a href="#sec-5">محركات تحويل النص إلى كلام (TTS)</a></li>
+    <li><a href="#sec-6">مركز المعلومات والموسوعات والأخبار</a></li>
+    <li><a href="#sec-7">المكتبة الشخصية والمحتوى المحمل</a></li>
+    <li><a href="#sec-8">العلامات الملونة والتعليقات والمرجعيات</a></li>
+    <li><a href="#sec-9">منظومة الإعدادات الموحدة</a></li>
+    <li><a href="#sec-10">التحديثات الذكية وسهولة الوصول</a></li>
+    <li><a href="#sec-11">المصادر المعتمدة</a></li>
     <li><a href="#sec-12">الأسئلة الشائعة (FAQ)</a></li>
-    <li><a href="#sec-13">المصادر المعتمدة</a></li>
-    <li><a href="#sec-14">المطور وقنوات التواصل</a></li>
+    <li><a href="#sec-13">المطور وقنوات التواصل</a></li>
   </ol>
 </nav>
 
 <main>
 
-  <!-- 1. START -->
+  <!-- 1. OVERVIEW -->
   <section id="sec-1">
     <div class="section-header">
       <span class="section-num">1</span>
-      <h2 class="section-title">البداية: أول تشغيل</h2>
+      <h2 class="section-title">فلسفة المنظومة والمنصات المدعومة</h2>
     </div>
     <div class="card">
-      <ol class="steps-list">
-        <li><strong>فتح التطبيق:</strong> عند التشغيل الأول تظهر الأقسام الرئيسية للمكتبات مرتبة هجائياً لسهولة التصفح.</li>
-        <li><strong>حالة الاتصال بالإنترنت:</strong> يلزم الاتصال بالإنترنت لتصفح الأقسام لأول مرة، وإجراء البحث العام، وتنزيل الكتب، وتفقد التحديثات. أما الكتب المحملة ومحفوظاتك فتعمل دائماً دون إنترنت.</li>
-        <li><strong>التنقل وزر الرجوع:</strong> زر الرجوع في جهازك ينقلك للخطوة السابقة، وعند الضغط عليه في الشاشة الرئيسية يُظهر تنبيهاً لتأكيد الخروج ومنع الإغلاق غير المقصود.</li>
-      </ol>
+      <p style="margin-bottom: 14px;">صُمم تطبيق <strong>بوابة القراءة والمعرفة (RKGate)</strong> ليعمل بنفس المنطق البرمجي والوظائف المتطابقة على كل من <strong>نظام ويندوز (Windows)</strong> و<strong>نظام أندرويد (Android)</strong>، موفراً تجربة موحدة دون تعقيد أو الحاجة لتسجيل حسابات:</p>
+      <ul class="item-list">
+        <li data-num="1.1"><strong>العمل المباشر والفوري:</strong> إتاحة كامل وظائف التطبيق وأدواته فور التشغيل دون طلب أي تسجيل دخول أو جمع بيانات شخصية.</li>
+        <li data-num="1.2"><strong>استقلالية العمل دون إنترنت (أوفلاين):</strong> يحتاج التطبيق للاتصال بالإنترنت فقط أثناء التصفح الأولي، أو إجراء البحث الحي، أو تنزيل الكتب، أو تفقد التحديثات؛ بينما تعمل المواد المحفوظة مسبقاً والمحركات المحلية دون اتصال بالشبكة تماماً.</li>
+        <li data-num="1.3"><strong>التوافقية التامة مع قارئات الشاشة:</strong> تم بناء البرنامج وفق معايير سهولة الوصول البرمجية ليتوافق بسلاسة مع برامج قراءة الشاشة للمكفوفين، سواء في ويندوز (NVDA و JAWS) أو في أندرويد (TalkBack و Jieshuo)، مع إعلانات صوتية فورية لحالات العمل والنتائج.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- 2. HOME -->
+  <!-- 2. BROWSING -->
   <section id="sec-2">
     <div class="section-header">
       <span class="section-num">2</span>
-      <h2 class="section-title">الشاشة الرئيسية</h2>
+      <h2 class="section-title">تصفح المكتبات واستعراض الأقسام</h2>
     </div>
     <div class="card">
-      <ul>
-        <li><strong>القائمة الجانبية (☰):</strong> تضم الوصول السريع إلى: الرئيسية، الإعدادات، مركز المعلومات، المكتبة (المفضلة والمحمّلة)، حول التطبيق، وزر الخروج.</li>
-        <li><strong>البحث العام:</strong> حقل رئيسي يتيح البحث في جميع المكتبات والأقسام المتاحة دفعة واحدة، مع توفير زر «إيقاف» لإلغاء المعالجة الجارية في أي لحظة.</li>
-        <li><strong>إدارة النتائج:</strong> زر «مزيد من الكتب» يظهر أسفل القائمة لتحميل دفعات إضافية، وزر «إغلاق نتائج البحث» يعيدك للشاشة الرئيسية السابقة.</li>
-        <li><strong>شريط الحالة والإشعارات:</strong> شريط سفلي يوضح عدد النتائج وحالة الاتصال، وهو مبرمج ليكون ناطقاً ومعلناً تلقائياً لبرامج قراءة الشاشة (TalkBack / Jieshuo).</li>
+      <p style="margin-bottom: 14px;">يوفر التطبيق فهرسة شاملة لآلاف الكتب التراثية والمصنفات الحديثة ضمن تصنيفات هجائية وموضوعية مرتبة:</p>
+      
+      <div class="box box-tip">
+        <strong>💡 آلية استعراض قائمة الكتب داخل القسم (الفارق بين النسختين):</strong>
+        <span>يتطابق المحتوى تماماً بين النظامين، ويكمن الفارق الوحيد في طريقة استعراض وتمرير كتب القسم الواحد:</span>
+        <ul class="sub-list" style="margin-top: 6px;">
+          <li><strong>في نسخة ويندوز (Windows):</strong> يعتمد التطبيق <strong>نظام الصفحات المستقلة والمرقمة</strong>؛ بحيث يتم التنقل بين دفعات الكتب عبر أوامر (الصفحة التالية، السابقة، الأولى، والأخيرة).</li>
+          <li><strong>في نسخة أندرويد (Android):</strong> يعتمد التطبيق <strong>نظام الجلب التراكمي المستمر</strong>؛ بحيث تظهر دفعة الكتب الأولى، ومع استدعاء خيار «المزيد» يتم جلب الدفعات التالية تباعاً حتى اكتمال كامل قائمة كتب القسم.</li>
+        </ul>
+      </div>
+
+      <ul class="item-list">
+        <li data-num="2.1"><strong>المتابعة التلقائية لآخر موضع:</strong> عند فتح أي كتاب، ينتقل البرنامج تلقائياً إلى الصفحة التي توقفت عندها في جلستك السابقة.</li>
+        <li data-num="2.2"><strong>التحميل والمطالعة الدائمة:</strong> إمكانية تنزيل المتن الكامل للكتاب محلياً بنقرة واحدة، لتصفحه والبحث فيه لاحقاً بدون إنترنت.</li>
+        <li data-num="2.3"><strong>البطاقة التعريفية للكتاب:</strong> الاطلاع على بيانات المصنف التفصيلية (المؤلف، المحقق، دار النشر، وبيانات الطبعة) ومشاركتها مباشرة.</li>
       </ul>
     </div>
   </section>
 
-  <!-- 3. BROWSE -->
+  <!-- 3. READING -->
   <section id="sec-3">
     <div class="section-header">
       <span class="section-num">3</span>
-      <h2 class="section-title">تصفح الكتب والتحميل</h2>
+      <h2 class="section-title">قدرات القراءة وتخصيص المتن</h2>
     </div>
     <div class="card">
-      <ol class="steps-list">
-        <li><strong>اختيار القسم:</strong> انقر على التصنيف المطلوب من الواجهة لعرض الكتب المندرجة تحته.</li>
-        <li><strong>فتح الكتاب:</strong> انقر نقرة واحدة لفتح الكتاب؛ سيبدأ القارئ تلقائياً من آخر صفحة توقفت عندها.</li>
-        <li><strong>قائمة الخيارات السريعة (ضغطة مطولة على الكتاب):</strong>
-          <ul>
-            <li>عرض البطاقة التعريفية والبيانات للكتاب.</li>
-            <li>إضافة الكتاب إلى المفضلة أو حذفه منها.</li>
-            <li><strong>تحميل الكتاب كاملاً:</strong> لحفظ نسخة نصية محلية للقراءة بدون إنترنت نهائياً.</li>
-            <li>فتح رابط الكتاب في المتصفح الخارجي.</li>
-          </ul>
-        </li>
-      </ol>
-      <div class="box box-tip">
-        💡 <strong>تلميح:</strong> البحث داخل أي قسم محدد يعرض نتائجه من كتب ذلك القسم فقط، ومسح حقل البحث يعيد القائمة الكاملة تلقائياً.
-      </div>
+      <ul class="item-list">
+        <li data-num="3.1"><strong>مرونة التنقل في المتن:</strong> دعم القفز المباشر برقم الصفحة، والتحرك التتابعي صفحة بصفحة، أو الانتقال الشجري عبر فهرس الأبواب والموضوعات.</li>
+        <li data-num="3.2"><strong>أنماط العرض المريحة:</strong> التبديل التام بين المظهر الفاتح والداكن (الوضع الليلي)، وخيار ملء الشاشة لحجب العناصر والتركيز على المتن.</li>
+        <li data-num="3.3"><strong>معالجة التشكيل والخطوط:</strong> خيار لحظي لإظهار أو إخفاء حركات الإعراب والتشكيل، مع التحكم الكامل في تكبير الخط وتصغيره وتغيير عائلته.</li>
+        <li data-num="3.4"><strong>أنماط تقسيم النصوص:</strong> أربعة أساليب لعرض وتقسيم النص تناسب مختلف الأذواق: (النمط السطري، نمط الفقرات المدمجة، نمط الجمل، أو كتلة النص الكاملة).</li>
+        <li data-num="3.5"><strong>التحديد والنسخ والمشاركة:</strong> إمكانية التحديد المفرد لسطر معين، أو التحديد المتعدد لعدة أسطر متتالية دفعة واحدة لنسخها أو مشاركتها.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- 4. READ -->
+  <!-- 4. SEARCH -->
   <section id="sec-4">
     <div class="section-header">
       <span class="section-num">4</span>
-      <h2 class="section-title">شاشة القراءة وأدواتها</h2>
+      <h2 class="section-title">أنظمة البحث المتعددة</h2>
     </div>
     <div class="card">
-      <h3>1. الشريط العلوي</h3>
-      <ul>
-        <li>يعرض <strong>عنوان الكتاب</strong>، يليه <strong>رقم الصفحة الحالية / الإجمالي</strong>، ثم <strong>اسم الباب أو الموضوع</strong> — كل معلومة بسطر مستقل لسهولة التتبع.</li>
-        <li><strong>القوائم العلوية المنسدلة:</strong> (التصفح، تحرير، عرض، العلامات، الكتاب).</li>
-        <li><strong>البحث داخل الكتاب:</strong> للبحث عن الكلمات والعبارات بدقة والانتقال المباشر لأماكن ورودها.</li>
-      </ul>
-
-      <h3>2. التنقل بين الصفحات</h3>
-      <ul>
-        <li><strong>الشريط السفلي:</strong> يحتوي على زري «السابقة» و«التالية»، ويتوسطهما <strong>صندوق اختيار الصفحة</strong> لإدخال رقم أي صفحة والانتقال إليها فوراً.</li>
-        <li>أزرار الانتقال لـ (الصفحة الأولى / الأخيرة) والفهرس الكامل تقع داخل قائمة «التصفح».</li>
-      </ul>
-
-      <h3>3. التفاعل مع النصوص والسطور</h3>
-      <ul>
-        <li><strong>الضغط على السطر:</strong> يفتح نافذة سريعة لإضافة علامة ملونة، إضافة مرجعية، نسخ السطر، أو مشاركته.</li>
-        <li><strong>الضغطة المطولة على السطر:</strong> تُفعّل وضع التحديد المتعدد لتحديد عدة أسطر متتالية ونسخها أو مشاركتها جملة واحدة.</li>
-      </ul>
-
-      <h3>4. تخصيص تجربة القراءة</h3>
-      <ul>
-        <li><strong>من قائمة «تحرير»:</strong> تكبير/تصغير حجم الخط للجلسة الحالية، إظهار أو إخفاء حركات التشكيل، نسخ الصفحة كاملة، أو مشاركتها.</li>
-        <li><strong>من قائمة «عرض»:</strong> التبديل للوضع الليلي المريح، أو تفعيل وضع ملء الشاشة لإخفاء كل القوائم والتركيز على المتن فقط.</li>
+      <ul class="item-list">
+        <li data-num="4.1"><strong>البحث العام الموحد:</strong> استعلام شامل وسريع يبحث عبر كافة أقسام ومكتبات التطبيق دفعة واحدة، مع إمكانية إيقاف المعالجة في أي وقت ومراجعة ما تم استرجاعه.</li>
+        <li data-num="4.2"><strong>البحث المخصص داخل القسم:</strong> تضييق نطاق الاستعلام ليعمل حصراً ضمن كتب تصنيف أو قسم محدد.</li>
+        <li data-num="4.3"><strong>البحث المتعمق في متن الكتاب:</strong> البحث داخل نصوص صفحات الكتاب الجاري، مع استعراض مقتطفات من أماكن ورود العبارات، وأرقام الصفحات، وإمكانية الانتقال الفوري لموضع الشاهد.</li>
       </ul>
     </div>
   </section>
 
-  <!-- 5. SEARCH -->
+  <!-- 5. TTS ENGINES -->
   <section id="sec-5">
     <div class="section-header">
       <span class="section-num">5</span>
-      <h2 class="section-title">أنظمة البحث بأنواعه</h2>
+      <h2 class="section-title">محركات تحويل النص إلى كلام (TTS)</h2>
     </div>
     <div class="card">
-      <ul>
-        <li><strong>البحث العام الشامل:</strong> متاح في الواجهة الرئيسية للبحث عبر كافة المكتبات والتصنيفات في وقت واحد.</li>
-        <li><strong>البحث المخصص في قسم:</strong> يعمل أثناء استعراض قسم معين لتضييق نطاق البحث على عناوينه فقط.</li>
-        <li><strong>البحث الدقيق داخل نص الكتاب:</strong> يعمل من شاشة القراءة، ويعرض رقم الصفحة وجزءاً من النص المقتطف مع زر للانتقال الفوري لموضع الكلمة.</li>
+      <p style="margin-bottom: 14px;">يضم التطبيق محركاً صوتياً متطوراً يتيح الاستماع المباشر للكتب مع التظليل البصري التزامني للسطر المقروء، والتحكم بالسرعة، ومستوى الصوت، والتقديم والتأخير:</p>
+      
+      <ul class="item-list">
+        <li data-num="5.1">
+          <strong>محرك Google TTS:</strong>
+          <ul class="sub-list">
+            <li><strong>في أندرويد:</strong> يعمل محلياً بالكامل <strong>دون إنترنت (أوفلاين)</strong> معتمداً على محرك النظام، ويوفر خيارات لأصوات متعددة.</li>
+            <li><strong>في ويندوز:</strong> يعتمد على <strong>الاتصال بالإنترنت</strong> وتقنيات الويب، ويوفر صوتاً قياسياً واحداً ويلزم وجود شبكة ليعمل.</li>
+          </ul>
+        </li>
+        <li data-num="5.2">
+          <strong>محرك أصوات مايكروسوفت الطبيعية (Microsoft Natural Voices):</strong>
+          محرك سحابي فائق الجودة يقرأ بنبرة بشرية طبيعية ومخارج ألفاظ دقيقة وتشكيل سليم لمختلف اللهجات العربية (يتطلب اتصالاً بالإنترنت).
+        </li>
+        <li data-num="5.3">
+          <strong>محرك CP5 / SAPI (حصري لنسخة ويندوز):</strong>
+          محرك إضافي خاص بنظام ويندوز، يعمل <strong>دون إنترنت (أوفلاين)</strong> مستنداً إلى مكتبات SAPI وأصوات النظام المثبتة على الكمبيوتر.
+        </li>
+        <li data-num="5.4">
+          <strong>محركات الذكاء الاصطناعي (ElevenLabs و Gemini):</strong>
+          توليد صوتي استثنائي عالي الواقعية عبر مفاتيح الربط البرمجي السحابية (API Keys).
+        </li>
       </ul>
+
+      <div class="box box-note">
+        <strong>⚠️ ملحوظة هامة حول ElevenLabs و Gemini:</strong>
+        <span>يُستحسن ويُوصى بشدة باستخدام <strong>مفتاح اشتراك مدفوع (Paid API Key)</strong> لكل من محركي ElevenLabs و Gemini؛ وذلك لتجاوز قيود الحسابات المجانية الضيقة على عدد الحروف والمحاولات في الدقيقة، وضمان استيعاب قراءة النصوص والصفحات الطويلة بشكل متواصل ومستقر.</span>
+      </div>
     </div>
   </section>
 
@@ -632,27 +644,28 @@
   <section id="sec-6">
     <div class="section-header">
       <span class="section-num">6</span>
-      <h2 class="section-title">مركز المعلومات والأخبار</h2>
+      <h2 class="section-title">مركز المعلومات والموسوعات والأخبار</h2>
     </div>
     <div class="card">
-      <ol class="steps-list">
-        <li><strong>اختيار المصدر:</strong> اختر الموسوعة المطلوبة (ويكيبيديا العربية/الإنجليزية، ويكاموس، ويكي الاقتباس، ويكي مصدر، المعرفة) أو قسماً إخبارياً وتقنياً.</li>
-        <li><strong>البحث والاستكشاف:</strong> اكتب موضوعك واضغط «بحث»، أو استخدم خيار «مقالة عشوائية» لاستكشاف معلومات جديدة.</li>
-        <li><strong>القراءة والحفظ:</strong> اضغط على النتيجة لفتحها داخل قارئ التطبيق أو فتحها في المتصفح الخارجي، وتتيح الضغطة المطولة حفظ المقال في المفضلة.</li>
-      </ol>
+      <ul class="item-list">
+        <li data-num="6.1"><strong>الموسوعات المعرفية الحرة:</strong> استعراض فوري وبحث مباشر في (ويكيبيديا العربية والإنجليزية، ويكاموس، ويكي الاقتباس، ويكي مصدر، وموسوعة المعرفة).</li>
+        <li data-num="6.2"><strong>الاستكشاف والمقالات العشوائية:</strong> توليد مقالات ومواد معرفية عشوائية بضغطة زر لتوسيع المدارك وتحفيز القراءة الحرة.</li>
+        <li data-num="6.3"><strong>الموجز الإخباري والتقني:</strong> متابعة أحدث الأخبار والتحليلات الثقافية والتقنية عبر موجز لمصادر عالمية موثوقة.</li>
+        <li data-num="6.4"><strong>بيئة قراءة موحدة للمقالات:</strong> قراءة نصوص الموسوعات داخل نفس واجهة القارئ، مع إمكانية حفظ المقالات في المفضلة للرجوع إليها.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- 7. LIBRARY & DOWNLOADS -->
+  <!-- 7. PERSONAL LIBRARY -->
   <section id="sec-7">
     <div class="section-header">
       <span class="section-num">7</span>
-      <h2 class="section-title">المفضلة والكتب المحملة</h2>
+      <h2 class="section-title">المكتبة الشخصية والمحتوى المحمل</h2>
     </div>
     <div class="card">
-      <ul>
-        <li><strong>قسم المفضلة:</strong> يجمع الكتب والمقالات التي قمت بحفظها لسرعة الوصول إليها؛ تُفتح بنقرة واحدة، وتُحذف بالضغطة المطولة.</li>
-        <li><strong>قسم الكتب المحملة:</strong> يضم النسخ النصية الكاملة المخزنة على ذاكرة الهاتف؛ تُقرأ أوفلاين دون إنترنت مع توفر بطاقة الكتاب وعدد صفحاته وخيار حذف النسخة لتوفير المساحة.</li>
+      <ul class="item-list">
+        <li data-num="7.1"><strong>قائمة المفضلة:</strong> حفظ الكتب والمواد الموسوعية المهمة للوصول إليها مباشرة دون الحاجة للبحث عنها مجدداً.</li>
+        <li data-num="7.2"><strong>المكتبة المحملة أوفلاين:</strong> إدارة الكتب التي تم تنزيل نصوصها الكاملة وتخزينها محلياً، مع إمكانية قراءتها والبحث فيها دون إنترنت، وحذف أي كتاب مستقبلاً بمرونة لتوفير المساحة.</li>
       </ul>
     </div>
   </section>
@@ -661,13 +674,13 @@
   <section id="sec-8">
     <div class="section-header">
       <span class="section-num">8</span>
-      <h2 class="section-title">العلامات والتعليقات والمرجعيات</h2>
+      <h2 class="section-title">العلامات الملونة والتعليقات والمرجعيات</h2>
     </div>
     <div class="card">
-      <ul>
-        <li><strong>العلامات الملونة (Bookmarks):</strong> تلوين سطر محدد بأحد الألوان الخمسة (أصفر، أحمر، أزرق، أخضر، وردي) مع إمكانية إرفاق ملاحظة مخصصة.</li>
-        <li><strong>التعليقات على الصفحات:</strong> تدوين هوامش وملاحظات تظهر أعلى الصفحة ويمكن مراجعتها وإدارتها وحذفها مجتمعة من قائمة العلامات.</li>
-        <li><strong>المرجعيات (References):</strong> حفظ مواضع معينة داخل الأبواب والفهارس للرجوع السريع إليها بضغطة زر.</li>
+      <ul class="item-list">
+        <li data-num="8.1"><strong>العلامات الملونة (Bookmarks):</strong> تمييز السطور المهمة بخمسة ألوان رمزية دلالية، مع خيار كتابة ملاحظة تظهر مقرونة بذلك السطر.</li>
+        <li data-num="8.2"><strong>التعليقات والهوامش:</strong> تدوين ملاحظات وهوامش مخصصة لكل صفحة، مع إمكانية استعراضها وتعديلها أو حذفها مجتمعة.</li>
+        <li data-num="8.3"><strong>نقاط التوقف المرجعية:</strong> حفظ مواضع معينة داخل فصول الكتاب للرجوع السريع إليها عند الحاجة.</li>
       </ul>
     </div>
   </section>
@@ -676,14 +689,16 @@
   <section id="sec-9">
     <div class="section-header">
       <span class="section-num">9</span>
-      <h2 class="section-title">الإعدادات والتخصيص</h2>
+      <h2 class="section-title">منظومة الإعدادات الموحدة</h2>
     </div>
     <div class="card">
-      <ul>
-        <li><strong>عامة:</strong> تحديد عدد الكتب المعروضة في الصفحة، تفعيل الفحص الدوري للتحديثات وزر «التحقق الآن»، وتحديد <strong>الفترة بين الفحص (بالدقائق — تبدأ من دقيقة واحدة والافتراضي 10 دقائق)</strong>، مع خيار إبقاء الشاشة مضاءة أثناء القراءة.</li>
-        <li><strong>المظهر والعرض:</strong> التبديل بين المظهر الفاتح والداكن، ضبط حجم خط القوائم وحجم خط القارئ بشكل دائم، تغيير نوع الخط ولون الخلفية.</li>
-        <li><strong>معالجة النصوص:</strong> خيار إظهار أو إخفاء حركات التشكيل، واختيار أسلوب تقسيم الأسطر (سطر بسطر، فقرات مدمجة، جمل، أو مقطع واحد).</li>
-        <li><strong>المؤثرات الصوتية:</strong> تفعيل أو تعطيل أصوات البحث والتنقل بين الصفحات والأزرار مع ميزة معاينة الصوت.</li>
+      <p style="margin-bottom: 14px;">خيارات وإعدادات التطبيق متطابقة تماماً وتعمل بالمنطق ذاته على نسختي ويندوز وأندرويد:</p>
+      <ul class="item-list">
+        <li data-num="9.1"><strong>الإعدادات العامة:</strong> تحديد سعة النتائج المعروضة لكل دفعة، وضبط دورة الفحص التلقائي للتحديثات، وخيار إبقاء الشاشة مضاءة أثناء القراءة.</li>
+        <li data-num="9.2"><strong>المظهر والعرض:</strong> التبديل بين الوضع الفاتح والداكن، وتحديد الحجم الدائم للخط، واختيار عائلة الخط ولون الخلفية.</li>
+        <li data-num="9.3"><strong>معالجة النصوص:</strong> تخصيص الوضع الافتراضي لإظهار أو كتم علامات التشكيل، وتحديد أسلوب تقسيم الأسطر المفضل.</li>
+        <li data-num="9.4"><strong>المؤثرات الصوتية:</strong> تفعيل أو تعطيل أصوات التنبيهات والأزرار والتنقل مع ميزة الاستماع والمعاينة قبل الاعتماد.</li>
+        <li data-num="9.5"><strong>إعدادات القراءة الصوتية (TTS):</strong> تحديد المحرك الافتراضي، اختيار الصوت المفضل، ضبط السرعة ودرجة النبرة ومستوى الصوت، وتخزين مفاتيح الـ API.</li>
       </ul>
     </div>
   </section>
@@ -692,25 +707,32 @@
   <section id="sec-10">
     <div class="section-header">
       <span class="section-num">10</span>
-      <h2 class="section-title">نظام التحديثات</h2>
+      <h2 class="section-title">التحديثات الذكية وسهولة الوصول</h2>
     </div>
     <div class="card">
-      <ul>
-        <li><strong>فحص تلقائي ذكي:</strong> يتحقق التطبيق من وجود إصدارات جديدة عند التشغيل، وعند العودة للشاشة الرئيسية، ودورياً بحسب الدقائق المحددة في الإعدادات.</li>
-        <li><strong>نافذة التحديث الشاملة:</strong> تعرض رقم الإصدار الحالي والجديد وأبرز التحسينات، مع 4 خيارات: (تنزيل داخل البرنامج، تنزيل في المتصفح، نسخ الرابط، ليس الآن) مع جلب النسخة المناسبة لمعمارية جهازك آلياً.</li>
-        <li><strong>تثبيت وحذف تلقائي:</strong> بعد اكتمال التنزيل تبدأ عملية التثبيت تلقائياً، وبعد انتهاء التثبيت يقوم التطبيق بحذف ملف التثبيت المؤقت لتوفير مساحة الهاتف.</li>
+      <ul class="item-list">
+        <li data-num="10.1"><strong>الفحص الذكي والمرن:</strong> فحص دوري مجدول بحسب الدقائق المختارة (من دقيقة واحدة والافتراضي 10 دقائق)، مع زر فوري لـ «التحقق الآن».</li>
+        <li data-num="10.2"><strong>آلية الترقية الآمنة:</strong> إمكانية تنزيل التحديث مباشرة أو التنزيل عبر المتصفح مع جلب الحزمة المناسبة لنظام تشغيلك آلياً.</li>
+        <li data-num="10.3"><strong>الحذف الذاتي للمخلفات:</strong> تنظيف فوري لملفات التثبيت المؤقتة بعد اكتمال الترقية لمنع استهلاك مساحة التخزين.</li>
+        <li data-num="10.4"><strong>سهولة الوصول الشاملة:</strong> بنية متوافقة بالكامل للمكفوفين عبر اختصارات لوحة المفاتيح في ويندوز، وإيماءات اللمس في أندرويد.</li>
       </ul>
     </div>
   </section>
 
-  <!-- 11. WINDOWS -->
+  <!-- 11. SOURCES -->
   <section id="sec-11">
     <div class="section-header">
       <span class="section-num">11</span>
-      <h2 class="section-title">نسخة نظام ويندوز (Windows)</h2>
+      <h2 class="section-title">المصادر المعتمدة</h2>
     </div>
     <div class="card">
-      <p>هذا الدليل مخصص حالياً لنسخة <strong>الأندرويد (Android)</strong>. ويجري العمل على إتاحة وتطوير نسخة مخصصة لأجهزة الكمبيوتر ونظام ويندوز قريباً بإذن الله.</p>
+      <p style="margin-bottom: 12px;">كافة المواد والمحتويات مستمدة من قواعد معرفية عامة ومفتوحة، وحقوقها محفوظة لمؤسساتها الأصلية:</p>
+      <ul class="item-list">
+        <li data-num="11.1"><strong>المكتبة الشاملة:</strong> <a href="https://shamela.ws" target="_blank" rel="noopener">shamela.ws</a></li>
+        <li data-num="11.2"><strong>مؤسسة هنداوي:</strong> <a href="https://www.safahat.org" target="_blank" rel="noopener">safahat.org</a></li>
+        <li data-num="11.3"><strong>المشاريع المعرفية:</strong> ويكيبيديا، ويكاموس، ويكي الاقتباس، ويكي مصدر، موسوعة المعرفة.</li>
+        <li data-num="11.4"><strong>المصادر التقنية والإخبارية:</strong> BBC عربي، RT عربي، البوابة العربية للأخبار التقنية، التقنية بلا حدود.</li>
+      </ul>
     </div>
   </section>
 
@@ -721,40 +743,45 @@
       <h2 class="section-title">الأسئلة الشائعة (FAQ)</h2>
     </div>
     <div class="card">
-      <h3>❓ لا تظهر الأقسام أو نتائج البحث، ما الحل؟</h3>
-      <p>تأكد من اتصال هاتفك بالإنترنت ثم أعد المحاولة؛ يحتوي التطبيق على نظام إعادة محاولة تلقائي عند حدوث أي انقطاع لحظي في الشبكة.</p>
-
-      <h3>❓ هل يمكنني استخدام التطبيق كاملاً بدون إنترنت؟</h3>
-      <p>نعم، جميع الكتب التي قمت بتحميلها، والمفضلة، والعلامات المرجعية تعمل بالكامل أوفلاين. يلزم الإنترنت فقط أثناء تصفح الأقسام لأول مرة، وإجراء البحث، وتنزيل الكتب الجديدة، وتفقد التحديثات.</p>
-
-      <h3>❓ أين أجد ملفات التحديث التي تم تنزيلها؟</h3>
-      <p>تتم إدارة ملفات التحديث داخل مسار آمن في التطبيق تلقائياً وتُحذف ذاتياً بمجرد اكتمال التثبيت لضمان عدم شغل أي مساحة إضافية على هاتفك.</p>
-    </div>
-  </section>
-
-  <!-- 13. SOURCES -->
-  <section id="sec-13">
-    <div class="section-header">
-      <span class="section-num">13</span>
-      <h2 class="section-title">المصادر المعتمدة</h2>
-    </div>
-    <div class="card">
-      <p>جميع المواد والمحتويات المعروضة مستمدة من مصادر معرفية عامة ومفتوحة، وحقوقها محفوظة لأصحابها ومؤسساتها:</p>
-      <ul>
-        <li><strong>المكتبة الشاملة:</strong> <a href="https://shamela.ws" target="_blank" rel="noopener">shamela.ws</a></li>
-        <li><strong>مؤسسة هنداوي:</strong> <a href="https://www.safahat.org" target="_blank" rel="noopener">safahat.org</a></li>
-        <li><strong>المشاريع المعرفية:</strong> ويكيبيديا، ويكاموس، ويكي الاقتباس، ويكي مصدر، موسوعة المعرفة.</li>
-        <li><strong>المصادر التقنية والإخبارية:</strong> BBC عربي، RT عربي، البوابة العربية للأخبار التقنية، التقنية بلا حدود.</li>
+      <ul class="item-list">
+        <li data-num="12.1">
+          <strong>ما هي المحركات الصوتية التي تعمل أوفلاين دون إنترنت؟</strong>
+          <p style="color: var(--text-muted); margin-top: 4px;">في نظام <strong>أندرويد</strong>، يعمل محرك Google TTS أوفلاين بالاعتماد على حزم أصوات النظام. وفي نظام <strong>ويندوز</strong>، يعمل محرك CP5 (SAPI) أوفلاين بالاعتماد على أصوات النظام المثبتة. أما باقي المحركات فتحتاج اتصالاً بالشبكة.</p>
+        </li>
+        <li data-num="12.2">
+          <strong>لماذا تنقطع قراءة محركي ElevenLabs أو Gemini أحياناً؟</strong>
+          <p style="color: var(--text-muted); margin-top: 4px;">يرجع ذلك عادةً للحدود المفروضة على الحسابات المجانية؛ ولذا يُنصح باستخدام مفتاح مدفوع (Paid Key) لضمان توليد صوتي طويل ومستقر دون توقف.</p>
+        </li>
+        <li data-num="12.3">
+          <strong>هل تُحذف كتبي المحملة أو علاماتي المرجعية عند تحديث البرنامج؟</strong>
+          <p style="color: var(--text-muted); margin-top: 4px;">لا، يتم الاحتفاظ بجميع بياناتك وعلاماتك وكتبك المحملة في مسار تخزين محلي آمن ومستقل لا يتأثر إطلاقاً بعمليات التحديث المتتابعة.</p>
+        </li>
       </ul>
     </div>
   </section>
 
-  <!-- 14. DEV & CONTACT -->
-  <section id="sec-14">
+  <!-- 13. CONTACT & COMMUNITY -->
+  <section id="sec-13">
+    <div class="section-header">
+      <span class="section-num">13</span>
+      <h2 class="section-title">المطور وقنوات التواصل</h2>
+    </div>
+
     <div class="contact-card">
-      <h2>✍️ التطوير والتواصل</h2>
+      <h2>✍️ المطور والتواصل المباشر</h2>
       <p>تصميم وتطوير وبرمجة: <strong>أحمد حسن عبد النبي (Ahmed Hassan)</strong></p>
-      <p>نرحب دائماً باقتراحاتكم، واستفساراتكم، وملاحظاتكم لتطوير التطبيق باستمرار.</p>
+
+      <!-- Community Invite Box -->
+      <div class="community-invite-box">
+        <div class="community-invite-title">🌟 يسعدنا ويشرفنا انضمامكم إلينا:</div>
+        <p style="margin-bottom: 12px; font-size: 15px;">يسعدنا انضمامكم لقناتنا على تيليجرام لمتابعة التحديثات والمشاريع البرمجية، ومجموعة النقاش التقنية لطرح الأسئلة والاقتراحات والملاحظات:</p>
+        <div class="actions-container" style="margin-top: 0;">
+          <a class="btn-action btn-tg" href="https://t.me/Basira_Tech" target="_blank" rel="noopener">📢 قناة تيليجرام: بصيرة تقنية</a>
+          <a class="btn-action btn-tg" href="https://t.me/+6e6e1QVB4z8xMGE0" target="_blank" rel="noopener">👥 مجموعة النقاش التقني</a>
+        </div>
+      </div>
+
+      <p style="margin-top: 18px;">للتواصل المباشر مع المطور لأي استفسارات أو دعم فني:</p>
 
       <div class="contact-items-grid">
         <div class="contact-box">
@@ -767,7 +794,7 @@
 
         <div class="contact-box">
           <div>
-            <div class="contact-box-title">حساب تيليجرام</div>
+            <div class="contact-box-title">حساب تيليجرام الشخصي</div>
             <div class="contact-box-val">@ah3376</div>
           </div>
           <button class="copy-btn" onclick="copyText('ah3376', this)" aria-label="نسخ اسم مستخدم تيليجرام">📋 نسخ المعرّف</button>
@@ -784,7 +811,7 @@
 
       <div class="actions-container">
         <a class="btn-action btn-wa" href="https://wa.me/201558863325" target="_blank" rel="noopener">💬 محادثة واتساب</a>
-        <a class="btn-action btn-tg" href="https://t.me/ah3376" target="_blank" rel="noopener">✈️ مراسلة تيليجرام</a>
+        <a class="btn-action btn-tg" href="https://t.me/ah3376" target="_blank" rel="noopener">✈️ مراسلة تيليجرام المباشرة</a>
         <a class="btn-action btn-em" href="mailto:ah2635670@gmail.com">📧 إرسال بريد إلكتروني</a>
       </div>
     </div>
@@ -793,7 +820,7 @@
 </main>
 
 <footer class="footer" role="contentinfo">
-  دليل تطبيق «بوابة القراءة والمعرفة» (RKGate) للأندرويد — الإصدار 1.2.6 · جميع الحقوق محفوظة للمطور ©.
+  دليل استخدام «بوابة القراءة والمعرفة» (RKGate) الموحد لنظامي Windows و Android — جميع الحقوق محفوظة للمطور ©.
 </footer>
 
 </div>
